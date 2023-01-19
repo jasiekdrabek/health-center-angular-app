@@ -1,0 +1,27 @@
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+.text-align-right{
+    text-align: right;
+} 
+
+button{
+    margin-left: 20px;
+}
+
+.example-container {
+    height: 91%;
+    background-color: #BBDEFB;
+  }
+
+  .primary-color{
+    background-color: #64B5F6;
+  }
+
+  .mat-sidenav{
+    width: 7%;
+    min-width: 90px;
+  }
