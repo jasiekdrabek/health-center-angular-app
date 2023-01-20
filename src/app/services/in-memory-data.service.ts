@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { Medicine } from '../interfaces/medicine';
 import { User } from '../interfaces/user';
 
 @Injectable({
@@ -17,7 +18,37 @@ export class InMemoryDataService {
         role: 'doctor',
       },
     ];
-    return {users}
+
+    const medicines:Medicine[] = [
+      {
+        id:0,name:'apap',dose:1000,activeSubstance:'a bo ja wiem'
+      },
+      {
+        id:1,name:'apap',dose:1000,activeSubstance:'a bo ja wiem'
+      },
+      {
+        id:2,name:'apap',dose:1000,activeSubstance:'a bo ja wiem'
+      },
+      {
+        id:3,name:'apap',dose:1000,activeSubstance:'a bo ja wiem'
+      }
+      ,{
+        id:4,name:'apap',dose:1000,activeSubstance:'a bo ja wiem'
+      }
+      ,{
+        id:5,name:'apap',dose:1000,activeSubstance:'a bo ja wiem'
+      }
+      ,{
+        id:6,name:'apap',dose:1000,activeSubstance:'a bo ja wiem'
+      },
+      {
+        id:7,name:'apap',dose:1000,activeSubstance:'a bo ja wiem'
+      },{
+        id:8,name:'apap',dose:1000,activeSubstance:'a bo ja wiem'
+      }
+
+    ]
+    return {users, medicines}
   }
 
   genId(user: User[]): number {
