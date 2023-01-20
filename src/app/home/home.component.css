@@ -3,12 +3,20 @@
     width: 60%;
     margin-left: 20%;
     height: fit-content;
+    background-color: #64B5F6;
   }
 
   label{
     display: block;
     text-align: left;
-    margin-top: 20px;
     margin-left: 10%;
     font-size: large;
+  }
+
+  .mat-card-content{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #FFCC80;
   }
