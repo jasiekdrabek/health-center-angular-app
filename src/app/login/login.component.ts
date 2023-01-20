@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { hashPassword } from '../helpers/hashPassword';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class LoginComponent {
     login = login.trim()
     password = password.trim()
     if(!login || !password) return
+    password = hashPassword(password)  
     this.userService.getUsers().subscribe((users) => {
       const user = users.find(
         (x) => x.login === login && x.password === password

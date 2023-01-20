@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
@@ -11,13 +11,8 @@ export class UserService {
   private usersUrl = 'api/users';
   userSubject: BehaviorSubject<User | undefined>;
   user: any;
-  u: User = {
-    id: 0,
-    login: '0',
-    password: '0',
-    name: 'Jan Drabek',
-    pesel: '98072410812',
-    role: 'doctor',
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
   constructor(private http: HttpClient) {
@@ -38,5 +33,9 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl);
+  }
+
+  addUser(user : User):void{
+    this.http.post<User>(this.usersUrl,user,this.httpOptions)
   }
 }
