@@ -8,7 +8,7 @@
     text-align: right;
 } 
 
-button{
+.button-margin{
     margin-left: 20px;
 }
 
@@ -23,5 +23,17 @@ button{
 
   .mat-sidenav{
     width: 7%;
-    min-width: 90px;
+    min-width: 120px;
+  }
+
+  .button-side-nav{
+    width: 100%;
+  }
+
+  .is-active{
+    background-color: #BBDEFB;    
+  }
+
+  a{
+    width: fit-content;
   }

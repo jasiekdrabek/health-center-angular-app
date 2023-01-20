@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent {
   constructor(private router: Router,private userService : UserService){}
-  async loginClick(login : string,password:string): Promise<void>{
+  loginClick(login : string,password:string) :void{
     login = login.trim()
     password = password.trim()
     if(!login || !password) return
@@ -17,12 +17,11 @@ export class LoginComponent {
       const user = users.find(
         (x) => x.login === login && x.password === password
       );
-      console.log(user)
       if (!user) return
       if(user){
-      this.userService.setUserValue(user)
-      console.log(this.userService.userValue)     
-      this.router.navigate(['/']);
+      this.userService.setUserValue(user)   
+      this.router.navigate(['/home']);
+      localStorage.setItem('user',JSON.stringify(user))
       }    
   });
   }

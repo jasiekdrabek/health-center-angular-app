@@ -1,8 +1,13 @@
 <mat-toolbar color="primary">
   <span class="fill-remaining-space ">{{title}}</span> 
-  <span *ngIf="user" class="fill-remaining-space text-align-right">{{user}} <button mat-raised-button color="accent">Sign out</button></span> 
+  <span *ngIf="user" class="fill-remaining-space text-align-right">{{user.name}} <button mat-raised-button color="accent" class="button-margin" (click)="signOut()">Sign out</button></span> 
 </mat-toolbar>
 <mat-sidenav-container  class="example-container" >
-  <mat-sidenav mode="side" opened class="primary-color mat-sidenav " *ngIf="user"></mat-sidenav>
+  <mat-sidenav mode="side" opened class="primary-color mat-sidenav " *ngIf="user">
+    <mat-list >
+      <a routerLink="/home" mat-list-item class="button-side-nav"  [routerLinkActive]="['is-active']">Home</a>
+    <a routerLink="/medicines" mat-list-item class="button-side-nav"  [routerLinkActive]="['is-active']">Medicines</a>
+    </mat-list>    
+  </mat-sidenav>
   <mat-sidenav-content ><router-outlet></router-outlet></mat-sidenav-content>
 </mat-sidenav-container>

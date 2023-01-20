@@ -12,6 +12,9 @@ import {MatFormFieldModule} from '@angular/material/form-field'
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import {MatIconModule} from '@angular/material/icon'
+import {MatMenuModule} from '@angular/material/menu'
+import {MatListModule} from '@angular/material/list'
 
 
 @NgModule({
@@ -28,6 +31,9 @@ import { InMemoryDataService } from './services/in-memory-data.service';
     MatCheckboxModule,
     MatFormFieldModule,
     HttpClientModule,
+    MatMenuModule,
+    MatIconModule,
+    MatListModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )

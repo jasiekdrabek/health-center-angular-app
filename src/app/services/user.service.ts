@@ -30,7 +30,7 @@ export class UserService {
   }
 
   public getUser(){
-    return this.userSubject
+    return this.userSubject.asObservable()
   }
   public setUserValue(user : User | undefined){
     this.userSubject.next(user);

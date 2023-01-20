@@ -1,0 +1,11 @@
+.mat-card {
+    margin-top: 5%;
+    width: 60%;
+    margin-left: 20%;
+    height: fit-content;
+  }
+
+  label{
+    display: block;
+    text-align: center;
+  }
