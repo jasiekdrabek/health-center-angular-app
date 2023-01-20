@@ -1,13 +1,71 @@
 <mat-toolbar color="primary">
-  <span class="fill-remaining-space ">{{title}}</span> 
-  <span *ngIf="user" class="fill-remaining-space text-align-right">{{user.name}} <button mat-raised-button color="accent" class="button-margin" (click)="signOut()">Sign out</button></span> 
+  <span class="fill-remaining-space">{{ title }}</span>
+  <span *ngIf="user" class="fill-remaining-space text-align-right"
+    >{{ user.name }}
+    <button
+      mat-raised-button
+      color="accent"
+      class="button-margin"
+      (click)="signOut()"
+    >
+      Sign out
+    </button></span
+  >
 </mat-toolbar>
-<mat-sidenav-container  class="example-container" >
-  <mat-sidenav mode="side" opened class="primary-color mat-sidenav " *ngIf="user">
-    <mat-list >
-      <a routerLink="/home" mat-list-item class="button-side-nav"  [routerLinkActive]="['is-active']">Home</a>
-    <a routerLink="/medicines" mat-list-item class="button-side-nav"  [routerLinkActive]="['is-active']">Medicines</a>
-    </mat-list>    
+<mat-sidenav-container class="example-container">
+  <mat-sidenav
+    mode="side"
+    opened
+    class="primary-color mat-sidenav"
+    *ngIf="user"
+  >
+    <mat-list>
+      <a
+        routerLink="/home"
+        mat-list-item
+        class="button-side-nav"
+        [routerLinkActive]="['is-active']"
+        >Home</a
+      >
+      <a
+        *ngIf="user.role === 'doctor'"
+        routerLink="/medicines"
+        mat-list-item
+        class="button-side-nav"
+        [routerLinkActive]="['is-active']"
+        >Medicines</a
+      >
+      <a
+        routerLink="/prescription"
+        mat-list-item
+        class="button-side-nav"
+        [routerLinkActive]="['is-active']"
+        >Prescriptions</a
+      >
+      <a
+        routerLink="/medicalReferral"
+        mat-list-item
+        class="button-side-nav"
+        [routerLinkActive]="['is-active']"
+        >Medical referrals</a
+      >
+      <a
+        *ngIf="user.role === 'doctor' || user.role === 'nurse'"
+        routerLink="/medicalVisit"
+        mat-list-item
+        class="button-side-nav"
+        [routerLinkActive]="['is-active']"
+        >Medical visits</a
+      >
+      <a
+        *ngIf="user.role === 'doctor' || user.role === 'nurse'"
+        routerLink="/registratoin"
+        mat-list-item
+        class="button-side-nav"
+        [routerLinkActive]="['is-active']"
+        >Registratoin</a
+      >
+    </mat-list>
   </mat-sidenav>
-  <mat-sidenav-content ><router-outlet></router-outlet></mat-sidenav-content>
+  <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
 </mat-sidenav-container>
