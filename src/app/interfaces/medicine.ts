@@ -3,4 +3,5 @@ export interface Medicine {
   name: string;
   activeSubstance: string;
   dose: number;
+  quantity?: number;
 }

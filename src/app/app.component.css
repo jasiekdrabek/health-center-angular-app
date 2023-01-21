@@ -1,56 +1,54 @@
 .fill-remaining-space {
-    /* This fills the remaining space, by using flexbox. 
+  /* This fills the remaining space, by using flexbox. 
        Every toolbar row uses a flexbox row layout. */
-    flex: 1 1 auto;
-    font-size: large;
-  }
+  flex: 1 1 auto;
+  font-size: large;
+}
 
-.text-align-right{
-    text-align: right;
-} 
+.text-align-right {
+  text-align: right;
+}
 
-.button-margin{
-    margin-left: 20px;
+.button-margin {
+  margin-left: 20px;
 }
 
 .example-container {
-    height: 91%;
-    background-color: #BBDEFB;
-  }
+  height: 91%;
+  background-color: #bbdefb;
+}
 
-  .primary-color{
-    background-color: #64B5F6;
-  }
+.primary-color {
+  background-color: #64b5f6;
+}
 
-  .mat-sidenav{
-    width: 8%;
-    min-width: 180px;
-  }
+.mat-sidenav {
+  width: 8%;
+  min-width: 180px;
+}
 
-  .button-side-nav{
-    width: 100%;
-    cursor: pointer;
-  }
+.button-side-nav {
+  width: 100%;
+  cursor: pointer;
+}
 
-  .is-active{
-    background-color: #BBDEFB;    
-  }
+.is-active {
+  background-color: #bbdefb;
+}
 
-  a{
-    width: fit-content;
-    cursor: pointer;
-  }
+a {
+  width: fit-content;
+  cursor: pointer;
+}
 
-  .mat-icon{
-    position: relative;
-    top: 4px;
-  }
+.mat-icon {
+  position: relative;
+  top: 4px;
+}
 
-  .image{
-    height: 20px;
-    width: 20px;
-    background-color: none;
-    border: none;
-  }
-
-
+.image {
+  height: 20px;
+  width: 20px;
+  background-color: none;
+  border: none;
+}

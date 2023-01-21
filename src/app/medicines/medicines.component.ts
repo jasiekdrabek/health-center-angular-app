@@ -10,7 +10,7 @@ import { MedicinesService } from '../services/medicines.service';
   templateUrl: './medicines.component.html',
   styleUrls: ['./medicines.component.css'],
 })
-export class MedicinesComponent implements AfterViewInit{
+export class MedicinesComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'name', 'dose', 'activeSubstance'];
   dataSource!: MatTableDataSource<Medicine>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -23,8 +23,8 @@ export class MedicinesComponent implements AfterViewInit{
       this.dataSource = new MatTableDataSource(medicines);
       this.isRateLimitReached = true;
       this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    })
+      this.dataSource.sort = this.sort;
+    });
   }
 
   ngAfterViewInit() {
@@ -32,8 +32,8 @@ export class MedicinesComponent implements AfterViewInit{
       this.dataSource = new MatTableDataSource(medicines);
       this.isRateLimitReached = true;
       this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    })
+      this.dataSource.sort = this.sort;
+    });
   }
 
   applyFilter(event: Event) {

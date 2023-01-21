@@ -3,18 +3,16 @@ import { CommonModule } from '@angular/common';
 import { PatientsListRoutingModule } from './patients-list-routing.module';
 import { PatientsListComponent } from './patients-list.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatInputModule} from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
-  declarations: [
-    PatientsListComponent
-  ],
+  declarations: [PatientsListComponent],
   imports: [
     CommonModule,
     PatientsListRoutingModule,
@@ -25,7 +23,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatSortModule
-  ]
+    MatSortModule,
+  ],
 })
-export class PatientsListModule { }
+export class PatientsListModule {}

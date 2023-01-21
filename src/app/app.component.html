@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span><mat-icon > local_hospital</mat-icon></span>
+  <span><mat-icon> local_hospital</mat-icon></span>
   <span class="fill-remaining-space">{{ title }}</span>
   <span *ngIf="user" class="fill-remaining-space text-align-right"
     >{{ user.name }}
@@ -9,7 +9,7 @@
       class="button-margin"
       (click)="signOut()"
     >
-    <mat-icon >exit_to_app</mat-icon>
+      <mat-icon>exit_to_app</mat-icon>
     </button></span
   >
 </mat-toolbar>
@@ -34,7 +34,12 @@
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        ><img class="image" [routerLinkActive]="['is-active']" src ='https://cdn-icons-png.flaticon.com/512/212/212315.png'/> Medicines</a
+        ><img
+          class="image"
+          [routerLinkActive]="['is-active']"
+          src="https://cdn-icons-png.flaticon.com/512/212/212315.png"
+        />
+        Medicines</a
       >
       <a
         routerLink="/prescription"
@@ -64,7 +69,8 @@
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        >	<mat-icon>input</mat-icon>Registration</a
+      >
+        <mat-icon>input</mat-icon>Registration</a
       >
       <a
         *ngIf="user.role === 'doctor' || user.role === 'nurse'"

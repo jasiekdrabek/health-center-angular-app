@@ -3,18 +3,14 @@ import { CommonModule } from '@angular/common';
 import { MedicinesRoutingModule } from './medicines-routing.module';
 import { MedicinesComponent } from './medicines.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatInputModule} from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 
-
-
 @NgModule({
-  declarations: [
-    MedicinesComponent
-  ],
+  declarations: [MedicinesComponent],
   imports: [
     CommonModule,
     MedicinesRoutingModule,
@@ -23,7 +19,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatInputModule,
     MatCardModule,
-    MatSortModule
-  ]
+    MatSortModule,
+  ],
 })
-export class MedicinesModule { }
+export class MedicinesModule {}

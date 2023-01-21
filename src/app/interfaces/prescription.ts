@@ -6,6 +6,5 @@ export interface Prescription {
   doctorId: number;
   code:number;
   medicines: Medicine[];
-  quantitys: Number[];
   date: string;
 }
