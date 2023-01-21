@@ -4,4 +4,5 @@ export interface MedicalReferral {
   patientId: number;
   code: number;
   toWhichSpecialistDoctor: string;
+  date:string
 }

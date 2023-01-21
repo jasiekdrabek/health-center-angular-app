@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { MedicalReferral } from '../interfaces/medicalReferral';
+import { MedicalVisit } from '../interfaces/medicalVisit';
 import { Medicine } from '../interfaces/medicine';
+import { Prescription } from '../interfaces/prescription';
 import { User } from '../interfaces/user';
 
 @Injectable({
@@ -17,6 +20,22 @@ export class InMemoryDataService {
         pesel: '97230410714',
         role: 'doctor',
       },
+      {
+        id:1,
+        login: 'nurseZofia',
+        password: '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',
+        name: 'Zofia Drabek',
+        pesel:'93032310615',
+        role:'nurse',        
+      },
+      {
+        id:2,
+        login: 'patientMama',
+        password:'3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',
+        name:'Agnieszka Drabek',
+        pesel:'69052523197',
+        role:'patient'
+      }
     ];
 
     const medicines:Medicine[] = [
@@ -48,7 +67,45 @@ export class InMemoryDataService {
       }
 
     ]
-    return {users, medicines}
+
+    var nowDate = new Date(); 
+    var date = nowDate.getFullYear()+'.'+(nowDate.getMonth()+1)+'.'+nowDate.getDate(); 
+    const prescriptions : Prescription[] = [
+      {
+        id:0,
+        doctorId:0,
+        patientId:2,
+        code: 1638,
+        medicines:[medicines[0]],
+        quantitys:[3],
+        date: date
+      }
+    ]
+
+    const medicalReferrals: MedicalReferral[] = [
+      {
+        id:0,
+        doctorId:0,
+        patientId:2,
+        code:3520,
+        toWhichSpecialistDoctor:'cardiologist',
+        date:date
+      }
+    ]
+
+    const medicalVisits: MedicalVisit[] = [
+      {
+        id:0,
+        doctorId:0,
+        patientId:2,
+        prescription: prescriptions[0],
+        medicalReferral: medicalReferrals[0],
+        date: date,
+        status: 'finish'
+      }
+    ]
+
+    return {users, medicines,prescriptions,medicalReferrals,medicalVisits}
   }
 
   genId(user: User[]): number {
