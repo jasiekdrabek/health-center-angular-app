@@ -65,6 +65,14 @@
         [routerLinkActive]="['is-active']"
         >Registration</a
       >
+      <a
+        *ngIf="user.role === 'doctor' || user.role === 'nurse'"
+        routerLink="/patientsList"
+        mat-list-item
+        class="button-side-nav"
+        [routerLinkActive]="['is-active']"
+        >Patients list</a
+      >
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>

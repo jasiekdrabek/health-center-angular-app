@@ -35,6 +35,14 @@ export class UserService {
     return this.http.get<User[]>(this.usersUrl);
   }
 
+  getPatients():Observable<User[]>{
+    return this.http.get<User[]>(this.usersUrl + '?role=patient');
+  }
+
+  deleteUser(id:number):Observable<User>{
+    return this.http.delete<User>(this.usersUrl + `/${id}`)
+  }
+
   addUser(user : User):void{
     this.http.post<User>(this.usersUrl,user,this.httpOptions)
   }

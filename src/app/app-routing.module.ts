@@ -60,7 +60,15 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
     canActivate: [AuthGuard],
   },
-  { path: 'patientsList', loadChildren: () => import('./patients-list/patients-list.module').then(m => m.PatientsListModule) },
+  {
+    path: 'patientsList',
+    loadChildren: () =>
+      import('./patients-list/patients-list.module').then(
+        (m) => m.PatientsListModule
+      ),
+    canActivate: [AuthGuard],
+    data: { roles: ['nurse', 'doctor'] },
+  },
 ];
 
 @NgModule({

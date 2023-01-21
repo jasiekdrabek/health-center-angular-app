@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { catchError, map, merge, startWith, switchMap } from 'rxjs/operators';
 import { Medicine } from '../interfaces/medicine';
 import { MedicinesService } from '../services/medicines.service';
 
@@ -19,12 +18,7 @@ export class MedicinesComponent {
   isLoadingResults = true;
   isRateLimitReached = false;
 
-  constructor(private medicinesService: MedicinesService) {
-    this.medicinesService.getAll().subscribe((medicines) => {
-      this.dataSource = new MatTableDataSource(medicines);      
-      this.isRateLimitReached = true;
-    })
-  }
+  constructor(private medicinesService: MedicinesService) {}
 
   ngAfterViewInit() {
     this.medicinesService.getAll().subscribe((medicines) => {
