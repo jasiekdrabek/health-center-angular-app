@@ -7,6 +7,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -21,7 +22,8 @@ import { MatCardModule } from '@angular/material/card';
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSortModule
   ]
 })
 export class MedicinesModule { }

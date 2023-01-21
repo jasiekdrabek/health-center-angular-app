@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,7 +10,7 @@ import { MedicinesService } from '../services/medicines.service';
   templateUrl: './medicines.component.html',
   styleUrls: ['./medicines.component.css'],
 })
-export class MedicinesComponent {
+export class MedicinesComponent implements AfterViewInit{
   displayedColumns: string[] = ['id', 'name', 'dose', 'activeSubstance'];
   dataSource!: MatTableDataSource<Medicine>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
