@@ -39,6 +39,7 @@ export class RegistrationComponent {
       password: password,
       pesel: pesel,
       name: name,
+      role:'patient'
     } as User);
     alert(`Add user ${login}`);
   }
