@@ -26,7 +26,7 @@
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        ><mat-icon class="mat-icon">home</mat-icon>Home</a
+        ><mat-icon class="mat-icon">home</mat-icon> Home</a
       >
       <a
         *ngIf="user.role === 'doctor'"
@@ -39,21 +39,21 @@
           [routerLinkActive]="['is-active']"
           src="https://cdn-icons-png.flaticon.com/512/212/212315.png"
         />
-        Medicines</a
+         Medicines</a
       >
       <a
         routerLink="/prescription"
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        ><mat-icon>description</mat-icon>Prescriptions</a
+        ><mat-icon>description</mat-icon> Prescriptions</a
       >
       <a
         routerLink="/medicalReferral"
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        ><mat-icon>description</mat-icon>Medical referrals</a
+        ><mat-icon>description</mat-icon> Medical referrals</a
       >
       <a
         *ngIf="user.role === 'doctor' || user.role === 'nurse'"
@@ -61,7 +61,7 @@
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        ><mat-icon>assignment</mat-icon>Medical visits</a
+        ><mat-icon>assignment</mat-icon> Medical visits</a
       >
       <a
         *ngIf="user.role === 'doctor' || user.role === 'nurse'"
@@ -70,7 +70,7 @@
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
       >
-        <mat-icon>input</mat-icon>Registration</a
+        <mat-icon>input</mat-icon> Registration</a
       >
       <a
         *ngIf="user.role === 'doctor' || user.role === 'nurse'"
@@ -78,7 +78,7 @@
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        ><mat-icon>list</mat-icon>Patients list</a
+        ><mat-icon>list</mat-icon> Patients list</a
       >
     </mat-list>
   </mat-sidenav>
