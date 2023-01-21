@@ -18,7 +18,14 @@ export class MedicinesComponent {
   isLoadingResults = true;
   isRateLimitReached = false;
 
-  constructor(private medicinesService: MedicinesService) {}
+  constructor(private medicinesService: MedicinesService) {
+    this.medicinesService.getAll().subscribe((medicines) => {
+      this.dataSource = new MatTableDataSource(medicines);
+      this.isRateLimitReached = true;
+      this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    })
+  }
 
   ngAfterViewInit() {
     this.medicinesService.getAll().subscribe((medicines) => {

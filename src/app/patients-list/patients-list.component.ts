@@ -18,7 +18,14 @@ export class PatientsListComponent {
   isLoadingResults = true;
   isRateLimitReached = false;
 
-  constructor(private userService: UserService) {  }
+  constructor(private userService: UserService) { 
+    this.userService.getPatients().subscribe((users) => {
+      this.dataSource = new MatTableDataSource(users);
+      this.isRateLimitReached = true;
+      this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    })
+   }
 
   ngAfterViewInit() {
     this.userService.getPatients().subscribe((users) => {
