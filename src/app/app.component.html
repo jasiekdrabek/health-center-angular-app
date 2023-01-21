@@ -1,14 +1,15 @@
 <mat-toolbar color="primary">
+  <span><mat-icon > local_hospital</mat-icon></span>
   <span class="fill-remaining-space">{{ title }}</span>
   <span *ngIf="user" class="fill-remaining-space text-align-right"
     >{{ user.name }}
     <button
-      mat-raised-button
+      mat-icon-button
       color="accent"
       class="button-margin"
       (click)="signOut()"
     >
-      Sign out
+    <mat-icon >exit_to_app</mat-icon>
     </button></span
   >
 </mat-toolbar>
@@ -25,7 +26,7 @@
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        >Home</a
+        ><mat-icon class="mat-icon">home</mat-icon>Home</a
       >
       <a
         *ngIf="user.role === 'doctor'"
@@ -33,21 +34,21 @@
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        >Medicines</a
+        ><img class="image" [routerLinkActive]="['is-active']" src ='https://cdn-icons-png.flaticon.com/512/212/212315.png'/> Medicines</a
       >
       <a
         routerLink="/prescription"
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        >Prescriptions</a
+        ><mat-icon>description</mat-icon>Prescriptions</a
       >
       <a
         routerLink="/medicalReferral"
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        >Medical referrals</a
+        ><mat-icon>description</mat-icon>Medical referrals</a
       >
       <a
         *ngIf="user.role === 'doctor' || user.role === 'nurse'"
@@ -55,7 +56,7 @@
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        >Medical visits</a
+        ><mat-icon>assignment</mat-icon>Medical visits</a
       >
       <a
         *ngIf="user.role === 'doctor' || user.role === 'nurse'"
@@ -63,7 +64,7 @@
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        >Registration</a
+        >	<mat-icon>input</mat-icon>Registration</a
       >
       <a
         *ngIf="user.role === 'doctor' || user.role === 'nurse'"
@@ -71,7 +72,7 @@
         mat-list-item
         class="button-side-nav"
         [routerLinkActive]="['is-active']"
-        >Patients list</a
+        ><mat-icon>list</mat-icon>Patients list</a
       >
     </mat-list>
   </mat-sidenav>
