@@ -24,15 +24,16 @@ Here we have a home screen where we have information about currently logged user
 
 ![registracionScreen](/screenshots/registration.png)
 
-### Patients list
-
 Registracion screen is aviable only for doctor and nurse. Here we can add new patients.
+
+
+### Patients list
 
 ![patientsListScreen](/screenshots/patientsList.png)
 
-### Medical referral
-
 This page is also only for doctor and nurse. We can view and delete patients.
+
+### Medical referral
 
 ![medialReferralScreen](/screenshots/medicalReferral.png)
 
