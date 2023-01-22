@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { Medicine } from '../interfaces/medicine';
+import { handleError } from '../helpers/handleError';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MedicinesService {
-
   private medicinesUrl = 'api/medicines';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getAll():Observable<Medicine[]>{
-    return this.http.get<Medicine[]>(this.medicinesUrl)
+  getAll(): Observable<Medicine[]> {
+    return this.http
+      .get<Medicine[]>(this.medicinesUrl)
+      .pipe(catchError(handleError<Medicine[]>([])));
   }
 }

@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { handleError } from '../helpers/handleError';
 import { User } from '../interfaces/user';
 
 @Injectable({
@@ -32,18 +33,18 @@ export class UserService {
   }  
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl);
+    return this.http.get<User[]>(this.usersUrl).pipe(catchError(handleError<User[]>([])));
   }
 
   getPatients():Observable<User[]>{
-    return this.http.get<User[]>(this.usersUrl + '?role=patient');
+    return this.http.get<User[]>(this.usersUrl + '?role=patient').pipe(catchError(handleError<User[]>([])));
   }
 
   deleteUser(id:number):Observable<User>{
-    return this.http.delete<User>(this.usersUrl + `/${id}`)
+    return this.http.delete<User>(this.usersUrl + `/${id}`).pipe(catchError(handleError<User>()))
   }
 
   addUser(user : User):void{
-    this.http.post<User>(this.usersUrl,user,this.httpOptions)
+    this.http.post<User>(this.usersUrl,user,this.httpOptions).pipe(catchError(handleError<User>()))
   }
 }
