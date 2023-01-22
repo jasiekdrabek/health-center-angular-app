@@ -8,7 +8,53 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## App screenshots
 
-coming soon.
+### Login
+
+![loginSrceen](/screenshots/login.png)
+
+standard login screen.
+
+### Home
+
+![homeScreen](/screenshots/home.png)
+
+Here we have a home screen where we have information about currently logged user. side nav is allways visable after user login.
+
+### Registration
+
+![registracionScreen](/screenshots/registration.png)
+
+### Patients list
+
+Registracion screen is aviable only for doctor and nurse. Here we can add new patients.
+
+![patientsListScreen](/screenshots/patientsList.png)
+
+### Medical referral
+
+This page is also only for doctor and nurse. We can view and delete patients.
+
+![medialReferralScreen](/screenshots/medicalReferral.png)
+
+Medical referrals are available for all user. Here we can see all our medical referrals.
+
+### Prescription
+
+![prescriptionScreen](/screenshots/prescription.png)
+
+![prescriptionExpandedScreen](/screenshots/prescriptionExpanded.png)
+
+Prescription page is also for all users. We can check all of our prescriptions. When we click on expand arrow we can see list of all medicines in chosen prescription.
+
+### Medicines
+
+![medicinesScreen](/screenshots/medicines.png)
+
+Screen with list of all medicines. Available onle for doctor.
+
+### Medical visits
+
+comming soon
 
 ## Development server
 
