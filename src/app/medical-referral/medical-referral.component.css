@@ -1,16 +1,8 @@
-table {
-  width: 80%;
-}
-
 .mat-mdc-form-field {
   font-size: 14px;
   width: 100%;
 }
 
-td,
-th {
-  width: 20%;
-}
 
 .mat-card {
   margin-top: 5%;
@@ -18,3 +10,9 @@ th {
   margin-left: 10%;
   height: fit-content;
 }
+
+table{
+  font-size: 2vw;
+}
+
+
