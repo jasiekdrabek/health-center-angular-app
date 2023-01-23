@@ -12,6 +12,8 @@ import { UserService } from '../services/user.service';
 })
 export class RegistrationComponent {
   constructor(private userService: UserService) {}
+  isValidPesel = isValidPesel;
+  isValidPassword = isValidPassword;
   registrationClick(
     login: string,
     password: string,
@@ -23,23 +25,17 @@ export class RegistrationComponent {
     name = name.trim();
     pesel = pesel.trim();
     if (!pesel || !login || !password || !name) return;
-    if (!isValidPesel(pesel)) {
-      alert('wrong pesel');
-      return;
-    }
-    if (!isValidPassword(password)) {
-      alert(
-        'password must have at least one digit, uppercase and lowercase letter and must be between 6 and 20 characters'
-      );
-      return;
-    }
+    if (!isValidPesel(pesel)) return;
+    if (!isValidPassword(password)) return;
     password = hashPassword(password);
-    this.userService.addUser({
-      login: login,
-      password: password,
-      pesel: pesel,
-      name: name,
-      role:'patient'
-    } as User).subscribe();
-      }
+    this.userService
+      .addUser({
+        login: login,
+        password: password,
+        pesel: pesel,
+        name: name,
+        role: 'patient',
+      } as User)
+      .subscribe();
+  }
 }
