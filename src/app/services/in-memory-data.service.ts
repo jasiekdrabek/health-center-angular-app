@@ -97,8 +97,8 @@ export class InMemoryDataService {
       },
     ];
 
-    var nowDate = new Date();
-    var date =
+    const nowDate = new Date();
+    const date =
       nowDate.getDate() +
       '.' +
       (nowDate.getMonth() + 1) +
@@ -145,10 +145,28 @@ export class InMemoryDataService {
       {
         id: 0,
         doctorId: 0,
-        patientId: 2,
+        patient: users[2],
         prescription: prescriptions[0],
         medicalReferral: medicalReferrals[0],
         date: date,
+        status: 'finish',
+      },
+      {
+        id: 1,
+        doctorId: 0,
+        patient: users[2],
+        prescription: prescriptions[0],
+        medicalReferral: medicalReferrals[0],
+        date: date,
+        status: 'finish',
+      },
+      {
+        id: 2,
+        doctorId: 0,
+        patient: users[2],
+        prescription: prescriptions[0],
+        medicalReferral: medicalReferrals[0],
+        date: '22.01.2023',
         status: 'finish',
       },
     ];
@@ -156,7 +174,7 @@ export class InMemoryDataService {
     return { users, medicines, prescriptions, medicalReferrals, medicalVisits };
   }
 
-  genId(user: User[]): number {
+  genId(user: User[] | MedicalVisit[] | MedicalReferral[] | Prescription[]): number {
     return user.length > 0 ? Math.max(...user.map((user) => user.id)) + 1 : 0;
   }
 }

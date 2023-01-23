@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { handleError } from '../helpers/handleError';
 import { User } from '../interfaces/user';
@@ -40,11 +40,15 @@ export class UserService {
     return this.http.get<User[]>(this.usersUrl + '?role=patient').pipe(catchError(handleError<User[]>([])));
   }
 
+  getDoctors():Observable<User[]>{
+    return this.http.get<User[]>(this.usersUrl + '?role=doctor').pipe(catchError(handleError<User[]>([])));
+  }
+
   deleteUser(id:number):Observable<User>{
     return this.http.delete<User>(this.usersUrl + `/${id}`).pipe(catchError(handleError<User>()))
   }
 
-  addUser(user : User):void{
-    this.http.post<User>(this.usersUrl,user,this.httpOptions).pipe(catchError(handleError<User>()))
+  addUser(user : User){   
+    return this.http.post<User>(this.usersUrl,user,this.httpOptions).pipe(tap((newUser :User) => alert(`add user ${newUser.name}`)),catchError(handleError<User>()))
   }
 }

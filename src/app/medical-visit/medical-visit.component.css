@@ -1,0 +1,33 @@
+.mat-form-field {
+    width: 70%;
+    margin-left: 15%;
+  }
+  
+  .mat-card {
+    margin-top: 5%;
+    width: 60%;
+    margin-left: 20%;
+    height: fit-content;
+  }
+  
+  .mat-form-field-button {
+    margin-left: 15%;
+    min-width: 17.5%;
+  }
+
+  .mat-card-header{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+
+  label{
+    display: block;
+    margin-left: 10%;
+  }
+
+  .visits-progress{
+    margin-left: auto;
+    margin-right: auto;
+  }

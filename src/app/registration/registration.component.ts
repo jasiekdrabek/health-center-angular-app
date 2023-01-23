@@ -40,7 +40,6 @@ export class RegistrationComponent {
       pesel: pesel,
       name: name,
       role:'patient'
-    } as User);
-    alert(`Add user ${login}`);
-  }
+    } as User).subscribe();
+      }
 }
