@@ -17,7 +17,7 @@ export class InMemoryDataService {
         password:
           '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',
         name: 'Jan Drabek',
-        pesel: '97230410714',
+        pesel: '93071534761',
         role: 'doctor',
       },
       {
@@ -26,7 +26,7 @@ export class InMemoryDataService {
         password:
           '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',
         name: 'Zofia Drabek',
-        pesel: '93032310615',
+        pesel: '82011481283',
         role: 'nurse',
       },
       {
@@ -35,7 +35,7 @@ export class InMemoryDataService {
         password:
           '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',
         name: 'Agnieszka Drabek',
-        pesel: '69052523197',
+        pesel: '56050374312',
         role: 'patient',
       },
     ];
@@ -50,49 +50,49 @@ export class InMemoryDataService {
       {
         id: 1,
         name: 'apap',
-        dose: 1000,
+        dose: 900,
         activeSubstance: 'a bo ja wiem',
       },
       {
         id: 2,
         name: 'apap',
-        dose: 1000,
+        dose: 800,
         activeSubstance: 'a bo ja wiem',
       },
       {
         id: 3,
         name: 'apap',
-        dose: 1000,
+        dose: 700,
         activeSubstance: 'a bo ja wiem',
       },
       {
         id: 4,
         name: 'apap',
-        dose: 1000,
+        dose: 600,
         activeSubstance: 'a bo ja wiem',
       },
       {
         id: 5,
         name: 'apap',
-        dose: 1000,
+        dose: 500,
         activeSubstance: 'a bo ja wiem',
       },
       {
         id: 6,
         name: 'apap',
-        dose: 1000,
+        dose: 400,
         activeSubstance: 'a bo ja wiem',
       },
       {
         id: 7,
         name: 'apap',
-        dose: 1000,
+        dose: 300,
         activeSubstance: 'a bo ja wiem',
       },
       {
         id: 8,
         name: 'apap',
-        dose: 1000,
+        dose: 200,
         activeSubstance: 'a bo ja wiem',
       },
     ];
