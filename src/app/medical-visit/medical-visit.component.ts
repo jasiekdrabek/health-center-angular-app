@@ -79,8 +79,11 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.userService.getPatients().subscribe((patients) => {
-      this.patients = patients;
+    this.userService.getUsers().subscribe((patients) => {
+      console.log(this.user)
+      console.log(patients)
+      patients.splice(patients.findIndex(patient => patient.id == this.user?.id),1)
+      this.patients = patients;      
     });
     this.userService
       .getDoctors()
@@ -99,6 +102,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
 
   addVisitClick(patient: User, doctor: User) {
     if (!patient || !doctor) return;
+    if(patient.id != doctor.id) return;
     const nowDate = new Date();
     const date =
       nowDate.getDate() +

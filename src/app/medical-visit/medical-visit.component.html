@@ -26,6 +26,9 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-error *ngIf="visitDoctor.value?.id == visitPatient.value?.id && visitDoctor.value && visitPatient.value" class="mat-form-field validation">
+        Doctor can't give himself/herself a visit
+      </mat-error>
     </mat-card-content>
     <mat-card-content>
       <button

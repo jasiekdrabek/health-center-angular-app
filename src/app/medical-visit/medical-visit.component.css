@@ -12,6 +12,7 @@
   }
   
   .mat-form-field-button {
+    margin-top: 20px;
     margin-left: 15%;
     min-width: 17.5%;
   }
@@ -37,5 +38,10 @@
     min-width: 20px;
     width: fit-content;
     padding: 0 0 0 0;
+  }
+
+  .validation{
+    margin-bottom: 20px;
+    margin-top: -20px;    
   }
   
