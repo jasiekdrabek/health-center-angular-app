@@ -69,6 +69,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: ['nurse', 'doctor'] },
   },
+  { path: '**', redirectTo: '/home' },
 ];
 
 @NgModule({
