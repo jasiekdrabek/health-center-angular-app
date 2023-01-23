@@ -32,7 +32,7 @@
         mat-raised-button
         class="mat-form-field-button"
         color="primary"
-        (click)="addVisitClick(selectedPatient, selectedDoctor)"
+        (click)="addVisitClick(selectedPatient, selectedDoctor); openSnackBar('add new visit for ' + selectedPatient.name, 'ok')"
       >
         Add new visit
       </button>

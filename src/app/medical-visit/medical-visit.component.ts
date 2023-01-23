@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -6,6 +12,7 @@ import { MedicalVisit } from '../interfaces/medicalVisit';
 import { User } from '../interfaces/user';
 import { MedicalVisitService } from '../services/medical-visit.service';
 import { UserService } from '../services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-medical-visit',
@@ -13,38 +20,35 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./medical-visit.component.css'],
 })
 export class MedicalVisitComponent implements OnInit, AfterViewInit {
-  user! : User | undefined 
+  user!: User | undefined;
   selectedPatient!: User;
   selectedDoctor!: User;
   todayVisitInProgress!: number;
   todayVisitFinished!: number;
   patients!: User[];
   doctors!: User[];
-  dataSourceVisitFinished!:MatTableDataSource<MedicalVisit>;
+  dataSourceVisitFinished!: MatTableDataSource<MedicalVisit>;
   dataSourceVisitInProgress!: MatTableDataSource<MedicalVisit>;
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
-  @ViewChildren(MatSort) sort= new QueryList<MatSort>();
+  @ViewChildren(MatSort) sort = new QueryList<MatSort>();
   isLoadingResults = true;
   isRateLimitReachedVisitInProgress = false;
   isRateLimitReachedVisitFinished = false;
-  displayedColumns: string[] = [
-    'id',
-    'patient',
-    'date',
-  ];
-  displayedColumnsWithEdit : string[] = [...this.displayedColumns,'actions']
+  displayedColumns: string[] = ['id', 'patient', 'date'];
+  displayedColumnsWithEdit: string[] = [...this.displayedColumns, 'actions'];
   constructor(
+    private _snackBar: MatSnackBar,
     private medicalVisitService: MedicalVisitService,
     private userService: UserService
-  ) {    
-    this.user = this.userService.userValue  
+  ) {
+    this.user = this.userService.userValue;
     this.medicalVisitService.getMedicalVisitInProgress().subscribe((visits) => {
-      this.medicalVisitService.getMedicalVisitFinished().subscribe((visits) =>{
-        this.dataSourceVisitFinished = new MatTableDataSource(visits);      
+      this.medicalVisitService.getMedicalVisitFinished().subscribe((visits) => {
+        this.dataSourceVisitFinished = new MatTableDataSource(visits);
         this.dataSourceVisitFinished.paginator = this.paginator.toArray()[0];
         this.dataSourceVisitFinished.sort = this.sort.toArray()[0];
-      })
-      this.dataSourceVisitInProgress = new MatTableDataSource(visits);      
+      });
+      this.dataSourceVisitInProgress = new MatTableDataSource(visits);
       this.dataSourceVisitInProgress.paginator = this.paginator.toArray()[1];
       this.dataSourceVisitInProgress.sort = this.sort.toArray()[1];
       this.isRateLimitReachedVisitInProgress = true;
@@ -53,24 +57,24 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.medicalVisitService.getMedicalVisitInProgress().subscribe((visits) => {
-      this.medicalVisitService.getMedicalVisitFinished().subscribe((visits) =>{
-        this.dataSourceVisitFinished = new MatTableDataSource(visits);      
+      this.medicalVisitService.getMedicalVisitFinished().subscribe((visits) => {
+        this.dataSourceVisitFinished = new MatTableDataSource(visits);
         this.dataSourceVisitFinished.paginator = this.paginator.toArray()[0];
         this.dataSourceVisitFinished.sort = this.sort.toArray()[0];
-        this.isRateLimitReachedVisitFinished = true
+        this.isRateLimitReachedVisitFinished = true;
         this.dataSourceVisitFinished.filterPredicate = (data, filter) => {
           const dataStr = data.id + data.patient.name.toLowerCase() + data.date;
-          return dataStr.indexOf(filter) != -1; 
-        }
-      })
+          return dataStr.indexOf(filter) != -1;
+        };
+      });
       this.dataSourceVisitInProgress = new MatTableDataSource(visits);
       this.isRateLimitReachedVisitInProgress = true;
       this.dataSourceVisitInProgress.paginator = this.paginator.toArray()[1];
       this.dataSourceVisitInProgress.sort = this.sort.toArray()[1];
       this.dataSourceVisitInProgress.filterPredicate = (data, filter) => {
         const dataStr = data.id + data.patient.name.toLowerCase() + data.date;
-        return dataStr.indexOf(filter) != -1; 
-      }
+        return dataStr.indexOf(filter) != -1;
+      };
     });
   }
 
@@ -88,7 +92,9 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
       );
     this.medicalVisitService
       .getTodayMedicalVisitFinished()
-      .subscribe((medcalVisits) => (this.todayVisitFinished = medcalVisits.length));
+      .subscribe(
+        (medcalVisits) => (this.todayVisitFinished = medcalVisits.length)
+      );
   }
 
   addVisitClick(patient: User, doctor: User) {
@@ -109,13 +115,11 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
       } as MedicalVisit)
       .subscribe(() => {
         this.todayVisitInProgress += 1;
-        this.ngAfterViewInit()
-        alert(`added new visit`);
+        this.ngAfterViewInit();
       });
   }
 
   applyFilterInProgress(event: Event) {
-    console.log(event.target)
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSourceVisitInProgress.filter = filterValue.trim().toLowerCase();
 
@@ -133,7 +137,9 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
     }
   }
 
-  edit(visit : MedicalVisit){
+  edit(visit: MedicalVisit) {}
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }
