@@ -51,3 +51,9 @@ a {
   background-color: none;
   border: none;
 }
+
+@media(max-width: 480px){
+  .mobile{
+    display: none;
+  }
+}

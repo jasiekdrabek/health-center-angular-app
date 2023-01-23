@@ -3,16 +3,29 @@
   width: 100%;
 }
 
-
 .mat-card {
   margin-top: 5%;
-  width: 80%;
-  margin-left: 10%;
+  width: calc(max(60%,fit-content));
+  margin-left: calc(max(20%,(100vw - fit-content)/2));
   height: fit-content;
 }
 
-table{
-  font-size: 1.5vw;
+.mat-card-header{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
 }
 
+label{
+  display: block;
+  margin-left: 10%;
+}
+
+
+tr,th,td{
+  min-width: 20px;
+  width: fit-content;
+  padding: 0 0 0 0;
+}
 
