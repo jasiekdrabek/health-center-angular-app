@@ -1,7 +1,8 @@
 .mat-card {
-  margin-top: 5%;
-  width: calc(max(60%,fit-content));
-  margin-left: calc(max(20%,(100vw - fit-content)/2));
+  margin-top: 5%; 
+  width: fit-content; 
+  margin-left: auto;
+  margin-right: auto;
   height: fit-content;
 }
 
@@ -22,4 +23,10 @@ tr,th,td{
   min-width: 20px;
   width: fit-content;
   padding: 0 0 0 0;
+}
+
+.mat-mdc-card-content{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }

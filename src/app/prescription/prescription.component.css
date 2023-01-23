@@ -1,7 +1,8 @@
 .mat-card {
-  margin-top: 5%;
-  width: calc(max(60%,fit-content));
-  margin-left: calc(max(20%,(100vw - fit-content)/2));
+  margin-top: 5%; 
+  width: fit-content; 
+  margin-left: auto;
+  margin-right: auto;
   height: fit-content;
 }
 
