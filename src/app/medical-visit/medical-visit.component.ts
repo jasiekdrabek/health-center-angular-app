@@ -80,8 +80,6 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((patients) => {
-      console.log(this.user)
-      console.log(patients)
       patients.splice(patients.findIndex(patient => patient.id == this.user?.id),1)
       this.patients = patients;      
     });
