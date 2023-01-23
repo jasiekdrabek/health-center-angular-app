@@ -38,62 +38,113 @@ export class InMemoryDataService {
         pesel: '56050374312',
         role: 'patient',
       },
+      {
+        id: 3,
+        login: 'patientTata',
+        password:
+          '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',
+        name: 'Stanisław Drabek',
+        pesel: '65040292716',
+        role: 'patient',
+      },
+      {
+        id: 4,
+        login: 'doctorRadek',
+        password:
+          '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',
+        name: 'Radosław Herbut',
+        pesel: '66022355212',
+        role: 'doctor',
+      },
+      {
+        id: 5,
+        login: 'nurseJola',
+        password:
+          '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2',
+        name: 'Jola Błaż',
+        pesel: '72062849824',
+        role: 'nurse',
+      },
     ];
 
     const medicines: Medicine[] = [
       {
         id: 0,
-        name: 'apap',
-        dose: 1000,
-        activeSubstance: 'a bo ja wiem',
+        name: 'Abilify',
+        dose: 10,
+        activeSubstance: 'arypiprazol',
       },
       {
         id: 1,
-        name: 'apap',
-        dose: 900,
-        activeSubstance: 'a bo ja wiem',
+        name: 'Abilify',
+        dose: 15,
+        activeSubstance: 'arypiprazol',
       },
       {
         id: 2,
-        name: 'apap',
-        dose: 800,
-        activeSubstance: 'a bo ja wiem',
+        name: 'Abilify',
+        dose: 30,
+        activeSubstance: 'arypiprazol',
       },
       {
         id: 3,
-        name: 'apap',
-        dose: 700,
-        activeSubstance: 'a bo ja wiem',
+        name: 'Cabometyx',
+        dose: 20,
+        activeSubstance: 'kabozantynib',
       },
       {
         id: 4,
-        name: 'apap',
-        dose: 600,
-        activeSubstance: 'a bo ja wiem',
+        name: 'Cabometyx',
+        dose: 40,
+        activeSubstance: 'kabozantynib',
       },
       {
         id: 5,
-        name: 'apap',
-        dose: 500,
-        activeSubstance: 'a bo ja wiem',
+        name: 'Cabometyx',
+        dose: 60,
+        activeSubstance: 'kabozantynib',
       },
       {
         id: 6,
-        name: 'apap',
-        dose: 400,
-        activeSubstance: 'a bo ja wiem',
+        name: 'Gasprid ',
+        dose: 5,
+        activeSubstance: 'cisapryd',
       },
       {
         id: 7,
-        name: 'apap',
-        dose: 300,
-        activeSubstance: 'a bo ja wiem',
+        name: 'Gasprid ',
+        dose: 10,
+        activeSubstance: 'cisapryd',
       },
       {
         id: 8,
-        name: 'apap',
-        dose: 200,
-        activeSubstance: 'a bo ja wiem',
+        name: 'Pabi-Dexamethason',
+        dose: 0.5,
+        activeSubstance: 'deksametazon',
+      },
+      {
+        id: 9,
+        name: 'Pabi-Dexamethason',
+        dose: 1,
+        activeSubstance: 'deksametazon',
+      },
+      {
+        id: 10,
+        name: 'Pabi-Dexamethason',
+        dose: 4,
+        activeSubstance: 'deksametazon',
+      },
+      {
+        id: 11,
+        name: 'Pabi-Dexamethason',
+        dose: 8,
+        activeSubstance: 'deksametazon',
+      },
+      {
+        id: 12,
+        name: 'Pabi-Dexamethason',
+        dose: 20,
+        activeSubstance: 'deksametazon',
       },
     ];
 
@@ -112,22 +163,28 @@ export class InMemoryDataService {
         code: 1638,
         medicines: [
           {
-            id: 0,
-            name: 'apap',
-            dose: 1000,
-            activeSubstance: 'a bo ja wiem',
+            ...medicines[2],
             quantity: 4,
           },
           {
-            id: 2,
-            name: 'apap',
-            dose: 1000,
-            activeSubstance: 'a bo ja wiem',
+            ...medicines[5],
             quantity: 5,
           },
         ],
         date: date,
       },
+      {
+        id:1,
+        doctorId:0,
+        patientId:2,
+        code:3607,
+        medicines:[{
+          ...medicines[6],
+          quantity: 2,
+        }
+        ],
+        date:date
+      }
     ];
 
     const medicalReferrals: MedicalReferral[] = [
@@ -137,6 +194,14 @@ export class InMemoryDataService {
         patientId: 2,
         code: 3520,
         toWhichSpecialistDoctor: 'cardiologist',
+        date: date,
+      },
+      {
+        id: 1,
+        doctorId: 0,
+        patientId: 2,
+        code: 6482,
+        toWhichSpecialistDoctor: 'laryngologist',
         date: date,
       },
     ];
@@ -155,8 +220,7 @@ export class InMemoryDataService {
         id: 1,
         doctorId: 0,
         patient: users[2],
-        prescription: prescriptions[0],
-        medicalReferral: medicalReferrals[0],
+        prescription: prescriptions[1],
         date: date,
         status: 'finish',
       },
@@ -164,10 +228,37 @@ export class InMemoryDataService {
         id: 2,
         doctorId: 0,
         patient: users[2],
-        prescription: prescriptions[0],
-        medicalReferral: medicalReferrals[0],
-        date: '22.1.2023',
+        medicalReferral: medicalReferrals[1],
+        date: date,
         status: 'finish',
+      },
+      {
+        id: 3,
+        doctorId: 0,
+        patient: users[5],
+        date: date,
+        status: 'in progress',
+      },
+      {
+        id: 3,
+        doctorId: 0,
+        patient: users[5],
+        date: date,
+        status: 'in progress',
+      },
+      {
+        id: 4,
+        doctorId: 0,
+        patient: users[1],
+        date: date,
+        status: 'in progress',
+      },
+      {
+        id: 5,
+        doctorId: 0,
+        patient: users[4],
+        date: date,
+        status: 'in progress',
       },
     ];
 
