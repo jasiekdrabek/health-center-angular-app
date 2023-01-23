@@ -166,7 +166,7 @@ export class InMemoryDataService {
         patient: users[2],
         prescription: prescriptions[0],
         medicalReferral: medicalReferrals[0],
-        date: '22.01.2023',
+        date: '22.1.2023',
         status: 'finish',
       },
     ];
