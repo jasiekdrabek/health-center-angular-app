@@ -36,7 +36,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
   constructor(
     private medicalVisitService: MedicalVisitService,
     private userService: UserService
-  ) {
+  ) {    
     this.user = this.userService.userValue  
     this.medicalVisitService.getMedicalVisitInProgress().subscribe((visits) => {
       this.medicalVisitService.getMedicalVisitFinished().subscribe((visits) =>{
@@ -58,11 +58,19 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
         this.dataSourceVisitFinished.paginator = this.paginator.toArray()[0];
         this.dataSourceVisitFinished.sort = this.sort.toArray()[0];
         this.isRateLimitReachedVisitFinished = true
+        this.dataSourceVisitFinished.filterPredicate = (data, filter) => {
+          const dataStr = data.id + data.patient.name.toLowerCase() + data.date;
+          return dataStr.indexOf(filter) != -1; 
+        }
       })
       this.dataSourceVisitInProgress = new MatTableDataSource(visits);
       this.isRateLimitReachedVisitInProgress = true;
       this.dataSourceVisitInProgress.paginator = this.paginator.toArray()[1];
       this.dataSourceVisitInProgress.sort = this.sort.toArray()[1];
+      this.dataSourceVisitInProgress.filterPredicate = (data, filter) => {
+        const dataStr = data.id + data.patient.name.toLowerCase() + data.date;
+        return dataStr.indexOf(filter) != -1; 
+      }
     });
   }
 
@@ -107,6 +115,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
   }
 
   applyFilterInProgress(event: Event) {
+    console.log(event.target)
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSourceVisitInProgress.filter = filterValue.trim().toLowerCase();
 
