@@ -46,15 +46,15 @@ export class MedicalVisitService {
       .pipe(catchError(handleError([])));
   }
 
-  getMedicalVisitInProgress(): Observable<MedicalVisit[]> {    
+  getMedicalVisitInProgress(id:number): Observable<MedicalVisit[]> {    
     return this.http
-      .get<MedicalVisit[]>(this.urlMedicalVisit + `?status=in progress`)
+      .get<MedicalVisit[]>(this.urlMedicalVisit + `?status=in progress&doctorId=${id}`)
       .pipe(catchError(handleError([])));
   }
 
-  getMedicalVisitFinished(): Observable<MedicalVisit[]> {
+  getMedicalVisitFinished(id:number): Observable<MedicalVisit[]> {
     return this.http
-      .get<MedicalVisit[]>(this.urlMedicalVisit + `?status=finish&date`)
+      .get<MedicalVisit[]>(this.urlMedicalVisit + `?status=finish&doctorId=${id}`)
       .pipe(catchError(handleError([])));
   }
 }

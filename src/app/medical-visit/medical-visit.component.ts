@@ -42,8 +42,8 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
     private userService: UserService
   ) {
     this.user = this.userService.userValue;
-    this.medicalVisitService.getMedicalVisitInProgress().subscribe((visits) => {
-      this.medicalVisitService.getMedicalVisitFinished().subscribe((visits) => {
+    this.medicalVisitService.getMedicalVisitInProgress(this.user?.id as number).subscribe((visits) => {
+      this.medicalVisitService.getMedicalVisitFinished(this.user?.id as number).subscribe((visits) => {
         this.dataSourceVisitFinished = new MatTableDataSource(visits);
         this.dataSourceVisitFinished.paginator = this.paginator.toArray()[0];
         this.dataSourceVisitFinished.sort = this.sort.toArray()[0];
@@ -56,8 +56,8 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.medicalVisitService.getMedicalVisitInProgress().subscribe((visits) => {
-      this.medicalVisitService.getMedicalVisitFinished().subscribe((visits) => {
+    this.medicalVisitService.getMedicalVisitInProgress(this.user?.id as number).subscribe((visits) => {
+      this.medicalVisitService.getMedicalVisitFinished(this.user?.id as number).subscribe((visits) => {
         this.dataSourceVisitFinished = new MatTableDataSource(visits);
         this.dataSourceVisitFinished.paginator = this.paginator.toArray()[0];
         this.dataSourceVisitFinished.sort = this.sort.toArray()[0];
