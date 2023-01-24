@@ -6,6 +6,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 [HealthCenterAngularApp](https://health-center-angular-app.web.app/). Example login: with doctor role: drJan; nurse role: nurseZofia; patient role: patientMama. All acounts have password: 123.
 
+## To do list
+
+- add to home page possibility to calculate clinical markers from [Api](https://rapidapi.com/jdimou/api/clinicalmarkers/)
+- implement visit details.
+
 ## App screenshots
 
 ### Login
@@ -55,7 +60,11 @@ Screen with list of all medicines. Available onle for doctor.
 
 ### Medical visits
 
-comming soon
+![medicalVisits1](/screenshots/MedicalVisit1.png)
+
+![medicalVisit2](/screenshots/MedicalVisit2.png)
+
+Here we have medicalVisit screen. ability to add new vistit has doctor and nurse, but only doctor can view and edit visits.
 
 ## Development server
 
