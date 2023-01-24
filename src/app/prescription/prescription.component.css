@@ -1,9 +1,16 @@
-.mat-card {
-  margin-top: 5%; 
+.mat-card {  
   width: fit-content; 
   margin-left: auto;
   margin-right: auto;
   height: fit-content;
+}
+
+.margin-top{
+  margin-top: 5%; 
+}
+
+.margin-bottom{
+  margin-bottom: 5%;
 }
 
 .mat-card-header{
@@ -22,5 +29,9 @@ label{
 tr,th,td{
   min-width: 20px;
   width: fit-content;
-  padding: 0 0 0 0;
+  padding: 1 1 1 1;
+}
+
+.detail-row{
+  height: 0;
 }

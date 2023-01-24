@@ -22,5 +22,5 @@ label{
 tr,th,td{
   min-width: 20px;
   width: fit-content;
-  padding: 0 0 0 0;
+  padding: 1 1 1 1;
 }

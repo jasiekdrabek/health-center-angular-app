@@ -20,3 +20,10 @@
     margin-bottom: 20px;
     margin-top: -20px;    
   }
+
+  .mat-card-header{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }

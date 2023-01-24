@@ -1,4 +1,7 @@
-<mat-card *ngIf="isRateLimitReached" class="mat-card">
+<mat-card *ngIf="isRateLimitReached" class="mat-card margin-top">
+  <mat-card-header class="mat-card-header">
+    <h2>My prescriptions</h2>
+  </mat-card-header>
   <mat-card-header>
     <mat-form-field>
       <mat-label>Filter</mat-label>
@@ -63,8 +66,9 @@
                 row == expandedElement ? 'expanded' : 'collapsed'
               "
             >
+            <mat-card class="mat-card">
               <table
-                class="mat-elevation-z8"
+                class="mat-elevation-z8 margin-top margin-bottom"
                 mat-table
                 [dataSource]="row.medicines"
               >
@@ -89,6 +93,7 @@
                   *matRowDef="let row; columns: displayedMedicineColumns"
                 ></tr>
               </table>
+            </mat-card>
             </div>
           </td>
         </ng-container>
@@ -103,7 +108,7 @@
         <tr
           mat-row
           *matRowDef="let row; columns: ['expandedDetail']"
-          class="example-detail-row"
+          class="detail-row"
         ></tr>
 
         <!-- Row shown when there is no matching data. -->
