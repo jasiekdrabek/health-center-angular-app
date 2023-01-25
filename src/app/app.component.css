@@ -23,7 +23,7 @@
 }
 
 .mat-sidenav {
-  width: 15%;
+  width: fit-content;
 }
 
 .button-side-nav {
@@ -53,6 +53,12 @@ a {
 }
 
 @media(max-width: 480px){
+  .mobile-name{
+    display: none;
+  }
+}
+
+@media(max-width: 760px){
   .mobile{
     display: none;
   }
