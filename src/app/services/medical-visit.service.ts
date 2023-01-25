@@ -5,7 +5,7 @@ import { catchError, Observable } from 'rxjs';
 import { MedicalVisit } from '../interfaces/medicalVisit';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'any',
 })
 export class MedicalVisitService {
   urlMedicalVisit = 'api/medicalVisits';
@@ -29,7 +29,9 @@ export class MedicalVisitService {
       '.' +
       nowDate.getFullYear();
     return this.http
-      .get<MedicalVisit[]>(this.urlMedicalVisit + `?status=in progress&date=${date}`)
+      .get<MedicalVisit[]>(
+        this.urlMedicalVisit + `?status=in progress&date=${date}`
+      )
       .pipe(catchError(handleError([])));
   }
 
@@ -46,15 +48,25 @@ export class MedicalVisitService {
       .pipe(catchError(handleError([])));
   }
 
-  getMedicalVisitInProgress(id:number): Observable<MedicalVisit[]> {    
+  getMedicalVisitInProgress(id: number): Observable<MedicalVisit[]> {
     return this.http
-      .get<MedicalVisit[]>(this.urlMedicalVisit + `?status=in progress&doctorId=${id}`)
+      .get<MedicalVisit[]>(
+        this.urlMedicalVisit + `?status=in progress&doctorId=${id}`
+      )
       .pipe(catchError(handleError([])));
   }
 
-  getMedicalVisitFinished(id:number): Observable<MedicalVisit[]> {
+  getMedicalVisitFinished(id: number): Observable<MedicalVisit[]> {
     return this.http
-      .get<MedicalVisit[]>(this.urlMedicalVisit + `?status=finish&doctorId=${id}`)
+      .get<MedicalVisit[]>(
+        this.urlMedicalVisit + `?status=finish&doctorId=${id}`
+      )
       .pipe(catchError(handleError([])));
+  }
+
+  getMadicalVisit(id: number): Observable<MedicalVisit> {
+    return this.http
+      .get<MedicalVisit>(this.urlMedicalVisit + `/${id}`)
+      .pipe(catchError(handleError({} as MedicalVisit)));
   }
 }
