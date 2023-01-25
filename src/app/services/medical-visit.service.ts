@@ -69,4 +69,10 @@ export class MedicalVisitService {
       .get<MedicalVisit>(this.urlMedicalVisit + `/${id}`)
       .pipe(catchError(handleError({} as MedicalVisit)));
   }
+
+  updateMedicalVisit(visit: MedicalVisit): Observable<any> {
+    return this.http
+      .put(this.urlMedicalVisit, visit, this.httpOptions)
+      .pipe(catchError(handleError()));
+  }
 }
