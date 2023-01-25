@@ -14,10 +14,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
   declarations: [
+    DetailsComponent,
     MedicalVisitComponent
   ],
   imports: [
@@ -34,7 +36,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatInputModule,
   ]
 })
 export class MedicalVisitModule { }
