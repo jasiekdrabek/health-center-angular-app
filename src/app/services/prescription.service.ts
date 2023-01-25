@@ -6,7 +6,7 @@ import { handleError } from '../helpers/handleError';
 import { Prescription } from '../interfaces/prescription';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'any',
 })
 export class PrescriptionService {
   private prescriptionUrl = 'api/prescriptions';

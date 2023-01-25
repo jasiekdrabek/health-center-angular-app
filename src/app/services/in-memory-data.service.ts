@@ -6,7 +6,7 @@ import { Prescription } from '../interfaces/prescription';
 import { User } from '../interfaces/user';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'any',
 })
 export class InMemoryDataService {
   createDb() {
@@ -240,7 +240,7 @@ export class InMemoryDataService {
         status: 'in progress',
       },
       {
-        id: 3,
+        id: 6,
         doctorId: 0,
         patient: users[5],
         date: date,
