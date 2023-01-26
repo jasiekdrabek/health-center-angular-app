@@ -112,7 +112,6 @@ export class DetailsComponent implements OnInit {
   }
 
   save() {
-    console.log(this.visit.details)
     if(this.visit.details == undefined) return
     this.visit.status = 'finish';
     if (typeof this.medicalReferralId == 'number') {

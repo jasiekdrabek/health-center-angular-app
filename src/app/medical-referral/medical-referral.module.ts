@@ -8,6 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MedicalReferralService } from '../services/medical-referral.service';
+import { UserService } from '../services/user.service';
 
 
 @NgModule({
@@ -23,6 +25,9 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     MatCardModule,
     MatSortModule,
+  ],
+  providers:[
+    MedicalReferralService, UserService
   ]
 })
 export class MedicalReferralModule { }

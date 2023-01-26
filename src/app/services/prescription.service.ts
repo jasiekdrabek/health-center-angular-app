@@ -5,9 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { handleError } from '../helpers/handleError';
 import { Prescription } from '../interfaces/prescription';
 
-@Injectable({
-  providedIn: 'any',
-})
+@Injectable()
 export class PrescriptionService {
   private prescriptionUrl = 'api/prescriptions';
   httpOptions = {

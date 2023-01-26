@@ -10,6 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { UserService } from '../services/user.service';
+import { PrescriptionService } from '../services/prescription.service';
 
 @NgModule({
   declarations: [PrescriptionComponent],
@@ -25,5 +27,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatButtonModule,
   ],
+  providers: [UserService, PrescriptionService],
 })
 export class PrescriptionModule {}

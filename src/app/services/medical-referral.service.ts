@@ -5,9 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { handleError } from '../helpers/handleError';
 import { MedicalReferral } from '../interfaces/medicalReferral';
 
-@Injectable({
-  providedIn: 'any',
-})
+@Injectable()
 export class MedicalReferralService {
   private medicalReferralUrl = 'api/medicalReferrals';
   httpOptions = {

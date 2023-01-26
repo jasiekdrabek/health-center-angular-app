@@ -15,6 +15,7 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,7 +36,7 @@ import { MatListModule } from '@angular/material/list';
       dataEncapsulation: false,
     }),
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

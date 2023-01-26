@@ -8,6 +8,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
+import { MedicinesService } from '../services/medicines.service';
 
 @NgModule({
   declarations: [MedicinesComponent],
@@ -21,5 +22,6 @@ import { MatSortModule } from '@angular/material/sort';
     MatCardModule,
     MatSortModule,
   ],
+  providers:[MedicinesService]
 })
 export class MedicinesModule {}

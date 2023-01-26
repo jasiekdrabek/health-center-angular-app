@@ -8,20 +8,21 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DetailsComponent } from './details/details.component';
-
+import { UserService } from '../services/user.service';
+import { MedicalVisitService } from '../services/medical-visit.service';
+import { MedicalReferralService } from '../services/medical-referral.service';
+import { PrescriptionService } from '../services/prescription.service';
+import { MedicinesService } from '../services/medicines.service';
 
 @NgModule({
-  declarations: [
-    DetailsComponent,
-    MedicalVisitComponent
-  ],
+  declarations: [DetailsComponent, MedicalVisitComponent],
   imports: [
     CommonModule,
     MedicalVisitRoutingModule,
@@ -38,6 +39,13 @@ import { DetailsComponent } from './details/details.component';
     MatIconModule,
     MatSnackBarModule,
     MatInputModule,
-  ]
+  ],
+  providers: [
+    UserService,
+    MedicalVisitService,
+    MedicalReferralService,
+    PrescriptionService,
+    MedicinesService,
+  ],
 })
-export class MedicalVisitModule { }
+export class MedicalVisitModule {}

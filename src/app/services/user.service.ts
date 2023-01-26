@@ -5,9 +5,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { handleError } from '../helpers/handleError';
 import { User } from '../interfaces/user';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class UserService {
   private usersUrl = 'api/users';
   userSubject: BehaviorSubject<User | undefined>;

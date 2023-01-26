@@ -4,9 +4,7 @@ import { catchError, Observable } from 'rxjs';
 import { Medicine } from '../interfaces/medicine';
 import { handleError } from '../helpers/handleError';
 
-@Injectable({
-  providedIn: 'any',
-})
+@Injectable()
 export class MedicinesService {
   private medicinesUrl = 'api/medicines';
   httpOptions = {
