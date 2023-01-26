@@ -112,6 +112,36 @@ export class DetailsComponent implements OnInit {
   }
 
   save() {
+    console.log(this.visit.details)
+    if(this.visit.details == undefined) return
+    this.visit.status = 'finish';
+    if (typeof this.medicalReferralId == 'number') {
+      if (this.toWhichSpecialistDoctor) {
+        if (this.visit.medicalReferral)
+          this.visit.medicalReferral.toWhichSpecialistDoctor =
+            this.toWhichSpecialistDoctor;
+      } else {
+        if (this.visit.medicalReferral) this.visit.medicalReferral = undefined;
+      }
+    } else {
+      if (this.toWhichSpecialistDoctor) {
+        const nowDate = new Date();
+        const date =
+          nowDate.getDate() +
+          '.' +
+          (nowDate.getMonth() + 1) +
+          '.' +
+          nowDate.getFullYear();
+        const medicalReferral = {
+          doctorId: this.visit.doctorId,
+          patientId: this.visit.patient.id,
+          date: date,
+          code: randomInteger(1000, 9999),
+          toWhichSpecialistDoctor: this.toWhichSpecialistDoctor,
+        } as MedicalReferral;
+        this.visit.medicalReferral = medicalReferral;
+      }
+    }
     this.medicalVisitService.updateMedicalVisit(this.visit).subscribe();
     if (typeof this.prescriptionId == 'number') {
       if (this.visit.prescription) {
@@ -149,23 +179,9 @@ export class DetailsComponent implements OnInit {
           .subscribe();
       }
     } else {
-      if (this.toWhichSpecialistDoctor) {
-        const nowDate = new Date();
-        const date =
-          nowDate.getDate() +
-          '.' +
-          (nowDate.getMonth() + 1) +
-          '.' +
-          nowDate.getFullYear();
-        const medicalReferral = {
-          doctorId: this.visit.doctorId,
-          patientId: this.visit.patient.id,
-          date: date,
-          code: randomInteger(1000, 9999),
-          toWhichSpecialistDoctor: this.toWhichSpecialistDoctor,
-        } as MedicalReferral;
+      if (this.visit.medicalReferral) {
         this.medicalReferralService
-          .addMedicalReferral(medicalReferral)
+          .addMedicalReferral(this.visit.medicalReferral)
           .subscribe();
       }
     }

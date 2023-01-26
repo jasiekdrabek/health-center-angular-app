@@ -100,7 +100,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
 
   addVisitClick(patient: User, doctor: User) {
     if (!patient || !doctor) return;
-    if(patient.id != doctor.id) return;
+    if(patient.id == doctor.id) return;
     const nowDate = new Date();
     const date =
       nowDate.getDate() +
@@ -118,6 +118,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
       .subscribe(() => {
         this.todayVisitInProgress += 1;
         this.ngAfterViewInit();
+        this.openSnackBar('add new visit for ' + this.selectedPatient.name, 'ok')
       });
   }
 
