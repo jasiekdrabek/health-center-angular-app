@@ -49,6 +49,6 @@ export class UserService {
   }
 
   addUser(user : User){   
-    return this.http.post<User>(this.usersUrl,user,this.httpOptions).pipe(tap((newUser :User) => alert(`add user ${newUser.name}`)),catchError(handleError<User>()))
+    return this.http.post<User>(this.usersUrl,user,this.httpOptions).pipe(catchError(handleError<User>()))
   }
 }

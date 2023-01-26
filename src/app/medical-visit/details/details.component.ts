@@ -11,6 +11,7 @@ import { randomInteger } from 'src/app/helpers/randomInt';
 import { PrescriptionService } from 'src/app/services/prescription.service';
 import { MedicalReferralService } from 'src/app/services/medical-referral.service';
 import { MedicalReferral } from 'src/app/interfaces/medicalReferral';
+import { SnackBarMessageService } from 'src/app/services/snack-bar-message.service';
 
 @Component({
   selector: 'app-details',
@@ -31,6 +32,7 @@ export class DetailsComponent implements OnInit {
   medicalReferralId: number | undefined;
   toWhichSpecialistDoctor!: string;
   constructor(
+    private snackBarMessageService: SnackBarMessageService,
     private prescriptionService: PrescriptionService,
     private medicalReferralService: MedicalReferralService,
     private route: ActivatedRoute,
@@ -41,6 +43,10 @@ export class DetailsComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  openSnackBar(message: string) {
+    this.snackBarMessageService.open(message).afterDismissed()    
   }
 
   ngOnInit(): void {
@@ -141,7 +147,7 @@ export class DetailsComponent implements OnInit {
         this.visit.medicalReferral = medicalReferral;
       }
     }
-    this.medicalVisitService.updateMedicalVisit(this.visit).subscribe();
+    this.medicalVisitService.updateMedicalVisit(this.visit).subscribe(() => this.openSnackBar('Visit saved'));
     if (typeof this.prescriptionId == 'number') {
       if (this.visit.prescription) {
         this.prescriptionService

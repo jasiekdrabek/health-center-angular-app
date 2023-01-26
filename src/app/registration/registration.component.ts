@@ -3,6 +3,7 @@ import { hashPassword } from '../helpers/hashPassword';
 import { isValidPesel } from '../helpers/isVaildPesel';
 import { isValidPassword } from '../helpers/isValidPassword';
 import { User } from '../interfaces/user';
+import { SnackBarMessageService } from '../services/snack-bar-message.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService,private snackBarMessageService: SnackBarMessageService,) {}
   isValidPesel = isValidPesel;
   isValidPassword = isValidPassword;
   registrationClick(
@@ -36,6 +37,10 @@ export class RegistrationComponent {
         name: name,
         role: 'patient',
       } as User)
-      .subscribe();
+      .subscribe((user)=> {this.openSnackBar(`add new user ${user.name}`)});
+  }
+
+  openSnackBar(message: string) {
+    this.snackBarMessageService.open(message).afterDismissed()    
   }
 }

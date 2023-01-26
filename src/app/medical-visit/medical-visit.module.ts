@@ -19,6 +19,7 @@ import { MedicalVisitService } from '../services/medical-visit.service';
 import { MedicalReferralService } from '../services/medical-referral.service';
 import { PrescriptionService } from '../services/prescription.service';
 import { MedicinesService } from '../services/medicines.service';
+import { SnackBarMessageService } from '../services/snack-bar-message.service';
 
 @NgModule({
   declarations: [DetailsComponent, MedicalVisitComponent],
@@ -44,6 +45,7 @@ import { MedicinesService } from '../services/medicines.service';
     MedicalReferralService,
     PrescriptionService,
     MedicinesService,
+    SnackBarMessageService
   ],
 })
 export class MedicalVisitModule {}
