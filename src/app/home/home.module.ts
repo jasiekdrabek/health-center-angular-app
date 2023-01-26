@@ -4,8 +4,6 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { UserService } from '../services/user.service';
-
 
 @NgModule({
   declarations: [
@@ -17,6 +15,5 @@ import { UserService } from '../services/user.service';
     MatCardModule,
     MatFormFieldModule
   ],
-  providers:[UserService]
 })
 export class HomeModule { }

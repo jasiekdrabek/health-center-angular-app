@@ -9,7 +9,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MedicalReferralService } from '../services/medical-referral.service';
-import { UserService } from '../services/user.service';
 
 
 @NgModule({
@@ -27,7 +26,7 @@ import { UserService } from '../services/user.service';
     MatSortModule,
   ],
   providers:[
-    MedicalReferralService, UserService
+    MedicalReferralService
   ]
 })
 export class MedicalReferralModule { }

@@ -6,7 +6,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { UserService } from '../services/user.service';
 
 
 @NgModule({
@@ -21,6 +20,5 @@ import { UserService } from '../services/user.service';
     MatCardModule,
     MatInputModule
   ],
-  providers:[UserService]
 })
 export class RegistrationModule {}

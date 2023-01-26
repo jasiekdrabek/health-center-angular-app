@@ -10,7 +10,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { UserService } from '../services/user.service';
 import { PrescriptionService } from '../services/prescription.service';
 
 @NgModule({
@@ -27,6 +26,6 @@ import { PrescriptionService } from '../services/prescription.service';
     MatIconModule,
     MatButtonModule,
   ],
-  providers: [UserService, PrescriptionService],
+  providers: [ PrescriptionService],
 })
 export class PrescriptionModule {}

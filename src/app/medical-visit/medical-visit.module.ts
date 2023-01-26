@@ -15,7 +15,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DetailsComponent } from './details/details.component';
-import { UserService } from '../services/user.service';
 import { MedicalVisitService } from '../services/medical-visit.service';
 import { MedicalReferralService } from '../services/medical-referral.service';
 import { PrescriptionService } from '../services/prescription.service';
@@ -41,7 +40,6 @@ import { MedicinesService } from '../services/medicines.service';
     MatInputModule,
   ],
   providers: [
-    UserService,
     MedicalVisitService,
     MedicalReferralService,
     PrescriptionService,
