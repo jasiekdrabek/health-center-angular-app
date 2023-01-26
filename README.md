@@ -9,7 +9,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## To do list
 
 - add to home page possibility to calculate clinical markers from [Api](https://rapidapi.com/jdimou/api/clinicalmarkers/)
-- implement visit details.
 
 ## App screenshots
 
@@ -65,6 +64,12 @@ Screen with list of all medicines. Available onle for doctor.
 ![medicalVisit2](/screenshots/MedicalVisit2.png)
 
 Here we have medicalVisit screen. ability to add new vistit has doctor and nurse, but only doctor can view and edit visits.
+
+### Medical visit details
+
+![visitDetails](/screenshots/visitDetails.png)
+
+Visit details page where doctor write descripton of it and can add prescription or medical referral. Visit can't be saved if there is no description of it. 
 
 ## Development server
 
