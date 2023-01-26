@@ -1,0 +1,21 @@
+
+.custom-snack-bar-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#progress-bar {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.mat-snack-bar-container{
+	margin-left: auto !important;
+	margin-right: auto !important;
+	text-align: center !important;
+	width: 40% !important;
+}

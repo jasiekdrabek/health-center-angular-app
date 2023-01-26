@@ -16,9 +16,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { UserService } from './services/user.service';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { MatProgressBarModule} from '@angular/material/progress-bar'
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SnackBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +34,7 @@ import { UserService } from './services/user.service';
     MatMenuModule,
     MatIconModule,
     MatListModule,
+    MatProgressBarModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
     }),

@@ -12,7 +12,7 @@ import { MedicalVisit } from '../interfaces/medicalVisit';
 import { User } from '../interfaces/user';
 import { MedicalVisitService } from '../services/medical-visit.service';
 import { UserService } from '../services/user.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarMessageService } from '../services/snack-bar-message.service';
 
 @Component({
   selector: 'app-medical-visit',
@@ -37,7 +37,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'patient', 'date'];
   displayedColumnsWithEdit: string[] = [...this.displayedColumns, 'actions'];
   constructor(
-    private _snackBar: MatSnackBar,
+    private snackBarMessageService: SnackBarMessageService,
     private medicalVisitService: MedicalVisitService,
     private userService: UserService
   ) {
@@ -118,7 +118,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
       .subscribe(() => {
         this.todayVisitInProgress += 1;
         this.ngAfterViewInit();
-        this.openSnackBar('add new visit for ' + this.selectedPatient.name, 'ok')
+        this.openSnackBar('add new visit for ' + this.selectedPatient.name)
       });
   }
 
@@ -140,9 +140,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
     }
   }
 
-  edit(visit: MedicalVisit) {}
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+  openSnackBar(message: string) {
+    this.snackBarMessageService.open(message).afterDismissed()    
   }
 }
