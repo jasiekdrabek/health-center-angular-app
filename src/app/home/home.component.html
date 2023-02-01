@@ -12,3 +12,33 @@
     <label>{{ user?.pesel }}</label>
   </mat-card>
 </mat-card>
+<mat-card class="mat-card">
+  <mat-card-header>
+    <h2>BMI calculator</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <form onsubmit="return false">
+      <mat-form-field appearance="fill" class="mat-form-field">
+        <mat-label>Height (cm):</mat-label>
+        <input type="number" onkeydown="return event.keyCode !== 69" matInput #height/>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mat-form-field">
+        <mat-label>Weight (kg):</mat-label>
+        
+        <input  matInput type="number" onkeydown="return event.keyCode !== 69" #weight/>
+      </mat-form-field>
+      <button
+      type="submit"
+      mat-raised-button
+      class="mat-form-field-button"
+      color="primary"
+      (click)="bmiClick(height.value, weight.value)"
+    >
+      Calculate
+    </button>
+    </form>
+    <mat-card *ngIf="loadBmi" class="mat-card-content">
+      <mat-label class="mat-label">Your BMI is {{bmi}}. You have {{bmiCharacterisation}}.</mat-label>
+    </mat-card>
+  </mat-card-content>
+</mat-card>
