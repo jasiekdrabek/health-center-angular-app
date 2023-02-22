@@ -3,20 +3,24 @@
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  height: fit-content; }
-  .mat-card__header {
+  height: fit-content;
+  &__header {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+  }
+}
 
 label {
   display: block;
-  margin-left: 10%; }
+  margin-left: 10%;
+}
 
 tr,
 th,
 td {
   min-width: 20px;
   width: fit-content;
-  padding: 1 1 1 1; }
+  padding: 1 1 1 1;
+}
