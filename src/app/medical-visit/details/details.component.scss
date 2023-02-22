@@ -3,35 +3,44 @@
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  height: fit-content; }
-  .mat-card__header {
+  height: fit-content;
+  &__header {
     text-align: center;
     margin-left: auto;
-    margin-right: auto; }
-  .mat-card__content {
+    margin-right: auto;
+  }
+  &__content {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 2%;
     margin-right: 2%;
     min-width: fit-content;
-    background-color: #bbdefb; }
-  .mat-card__button {
+    background-color: #bbdefb;
+  }
+  &__button {
     height: fit-content;
     width: fit-content;
     border: none;
-    margin-right: 20px; }
-  .mat-card__mat-icon {
+    margin-right: 20px;
+  }
+  &__mat-icon {
     font-size: 1.5em;
     height: fit-content;
-    width: fit-content; }
+    width: fit-content;
+  }
+}
 
-.form__mat-form-field {
-  margin-top: 20px;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto; }
-  .form__mat-form-field--margin-bottom {
-    margin-bottom: 20px; }
+.form {
+  &__mat-form-field {
+    margin-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    &--margin-bottom {
+      margin-bottom: 20px;
+    }
+  }
+}
 
 .visit-details {
   margin-left: auto;
@@ -39,23 +48,27 @@
   width: 80%;
   height: 200px;
   margin-top: 20px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+}
 
 .visit-medical-referral {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
   margin-top: 20px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+}
 
 table {
   margin-left: auto;
   margin-right: auto;
-  width: 80%; }
+  width: 80%;
+}
 
 tr,
 th,
 td {
   min-width: 20px;
   width: min-content;
-  padding: 1 0 0 0; }
+  padding: 1 0 0 0;
+}
