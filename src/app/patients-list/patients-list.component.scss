@@ -1,0 +1,26 @@
+.mat-card {
+    margin-top: 5%;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+    &__header {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+    }
+  }
+  
+  label {
+    display: block;
+    margin-left: 10%;
+  }
+  
+  tr,
+  th,
+  td {
+    min-width: 20px;
+    width: fit-content;
+    padding: 1 1 1 1;
+  }

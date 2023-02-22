@@ -1,26 +1,22 @@
 .mat-card {
-  margin-top: 5%; 
-  width: fit-content; 
+  margin-top: 5%;
+  width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  height: fit-content;
-}
+  height: fit-content; }
+  .mat-card__header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px; }
 
-.mat-card-header{
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-}
-
-label{
+label {
   display: block;
-  margin-left: 10%;
-}
+  margin-left: 10%; }
 
-
-tr,th,td{
+tr,
+th,
+td {
   min-width: 20px;
   width: fit-content;
-  padding: 1 1 1 1;
-}
+  padding: 1 1 1 1; }
