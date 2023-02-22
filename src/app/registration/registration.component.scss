@@ -2,14 +2,14 @@
   &__mat-form-field {
     width: 70%;
     margin-left: 15%;
-  }
-  &__mat-form-field-button {
-    margin-left: 15%;
-    width: 17.5%;
     &--validation {
       margin-bottom: 20px;
       margin-top: -20px;
     }
+  }
+  &__mat-form-field-button {
+    margin-left: 15%;
+    width: 17.5%;    
   }
 }
 

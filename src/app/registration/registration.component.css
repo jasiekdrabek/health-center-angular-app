@@ -1,13 +1,13 @@
 .form__mat-form-field {
   width: 70%;
   margin-left: 15%; }
+  .form__mat-form-field--validation {
+    margin-bottom: 20px;
+    margin-top: -20px; }
 
 .form__mat-form-field-button {
   margin-left: 15%;
   width: 17.5%; }
-  .form__mat-form-field-button--validation {
-    margin-bottom: 20px;
-    margin-top: -20px; }
 
 .mat-card {
   margin-top: 5%;
