@@ -1,37 +1,26 @@
 .mat-card {
-    margin-top: 5%;
-    width: 60%;
-    margin-left: 20%;
-    height: fit-content;
-    background-color: #64B5F6;
-  }
-
-  label{
-    display: block;
-    text-align: left;
-    margin-left: 10%;
-    font-size: large;
-  }
-
-  .mat-card-content{
+  margin-top: 5%;
+  width: 60%;
+  margin-left: 20%;
+  height: fit-content;
+  background-color: #64b5f6; }
+  .mat-card__content {
     margin-bottom: 20px;
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
-    background-color: #bbdefb;
-  }
+    background-color: #bbdefb; }
 
-  .mat-form-field {
-    width: 70%;
-    margin-left: 15%;
-  }
+.form__mat-form-field {
+  width: 70%;
+  margin-left: 15%; }
 
-  .mat-form-field-button {
-    margin-left: 15%;
-    width: 17.5%;
-  }
+.form__mat-form-field-button {
+  margin-left: 15%;
+  width: 17.5%; }
 
-  .mat-label{
-    display: block;
-    text-align: center;
-  }
+label {
+  display: block;
+  text-align: left;
+  margin-left: 10%;
+  font-size: large; }
