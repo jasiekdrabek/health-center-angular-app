@@ -1,84 +1,78 @@
 <mat-toolbar color="primary">
   <span><mat-icon> local_hospital</mat-icon></span>
-  <span class="fill-remaining-space mobile-name">{{ title }}</span>
-  <span *ngIf="user" class=" text-align-right"
+  <span class="mat-toolbar__element--mobile-title">{{ title }}</span>
+  <span class="mat-toolbar__element--fill-remaining-space"></span>
+  <span *ngIf="user"
     >{{ user.name }}
     <button
       mat-icon-button
       color="accent"
-      class="button-margin"
+      class="mat-toolbar__element--button-margin"
       (click)="signOut()"
     >
       <mat-icon>exit_to_app</mat-icon>
     </button></span
   >
 </mat-toolbar>
-<mat-sidenav-container class="container">
+<mat-sidenav-container class="mat-sidenav-container">
   <mat-sidenav
     mode="side"
     opened
-    class="primary-color mat-sidenav"
+    class="mat-sidenav"
     *ngIf="user"
   >
-    <mat-list>
+    <mat-list class="mat-list">
       <a
         routerLink="/home"
         mat-list-item
-        class="button-side-nav"
-        [routerLinkActive]="['is-active']"
-        ><mat-icon class="mat-icon">home</mat-icon> <span class="mobile">Home</span></a
+        [routerLinkActive]="['mat-list__button--is-active']"
+        ><mat-icon class="mat-list__button--mat-icon">home</mat-icon> <span class="mat-list__button--mobile">Home</span></a
       >
       <a
         *ngIf="user.role === 'doctor'"
         routerLink="/medicines"
         mat-list-item
-        class="button-side-nav"
-        [routerLinkActive]="['is-active']"
+        [routerLinkActive]="['mat-list__button--is-active']"
         ><img
-          class="image"
-          [routerLinkActive]="['is-active']"
+          class="mat-list__button--image"
+          [routerLinkActive]="['mat-list__button--is-active']"
           src="https://cdn-icons-png.flaticon.com/512/212/212315.png"
         />
-        <span class="mobile">Medicines</span></a
+        <span class="mat-list__button--mobile">Medicines</span></a
       >
       <a
         routerLink="/prescription"
         mat-list-item
-        class="button-side-nav"
-        [routerLinkActive]="['is-active']"
-        ><mat-icon>description</mat-icon><span class="mobile">Prescriptions</span> </a
+        [routerLinkActive]="['mat-list__button--is-active']"
+        ><mat-icon class="mat-list__button--mat-icon">description</mat-icon><span class="mat-list__button--mobile">Prescriptions</span> </a
       >
       <a
         routerLink="/medicalReferral"
         mat-list-item
-        class="button-side-nav"
-        [routerLinkActive]="['is-active']"
-        ><mat-icon>description</mat-icon><span class="mobile">Medical referrals</span> </a
+        [routerLinkActive]="['mat-list__button--is-active']"
+        ><mat-icon class="mat-list__button--mat-icon">description</mat-icon><span class="mat-list__button--mobile">Medical referrals</span> </a
       >
       <a
         *ngIf="user.role === 'doctor' || user.role === 'nurse'"
         routerLink="/medicalVisit"
         mat-list-item
-        class="button-side-nav"
-        [routerLinkActive]="['is-active']"
-        ><mat-icon>assignment</mat-icon><span class="mobile">Medical visits</span> </a
+        [routerLinkActive]="['mat-list__button--is-active']"
+        ><mat-icon class="mat-list__button--mat-icon">assignment</mat-icon><span class="mat-list__button--mobile">Medical visits</span> </a
       >
       <a
         *ngIf="user.role === 'doctor' || user.role === 'nurse'"
         routerLink="/registration"
         mat-list-item
-        class="button-side-nav"
-        [routerLinkActive]="['is-active']"
+        [routerLinkActive]="['mat-list__button--is-active']"
       >
-        <mat-icon>input</mat-icon><span class="mobile">Registration</span> </a
+        <mat-icon class="mat-list__button--mat-icon">input</mat-icon><span class="mat-list__button--mobile">Registration</span> </a
       >
       <a
         *ngIf="user.role === 'doctor' || user.role === 'nurse'"
         routerLink="/patientsList"
         mat-list-item
-        class="button-side-nav"
-        [routerLinkActive]="['is-active']"
-        ><mat-icon>list</mat-icon><span class="mobile">Patients list</span> </a
+        [routerLinkActive]="['mat-list__button--is-active']"
+        ><mat-icon class="mat-list__button--mat-icon">list</mat-icon><span class="mat-list__button--mobile">Patients list</span> </a
       >
     </mat-list>
   </mat-sidenav>
