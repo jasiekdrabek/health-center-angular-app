@@ -1,9 +1,9 @@
 <mat-card class="mat-card">
-  <mat-card-header class="mat-card-header">
-    <h2>Add new visit</h2>
+  <mat-card-header class="mat-card__header">
+    <h1>Add new visit</h1>
   </mat-card-header>
-    <mat-card-content>
-      <mat-form-field appearance="fill" class="mat-form-field">
+    <mat-card-content class="form">
+      <mat-form-field appearance="fill" class="form__mat-form-field">
         <mat-label>Patient:</mat-label>
         <mat-select
           [(ngModel)]="selectedPatient"
@@ -16,7 +16,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field appearance="fill" class="mat-form-field">
+      <mat-form-field appearance="fill" class="form__mat-form-field">
         <mat-label>Doctor: </mat-label>
         <mat-select
           [(ngModel)]="selectedDoctor"
@@ -29,14 +29,14 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-error *ngIf="visitDoctor.value?.id == visitPatient.value?.id && visitDoctor.value && visitPatient.value" class="mat-form-field validation">
+      <mat-error *ngIf="visitDoctor.value?.id == visitPatient.value?.id && visitDoctor.value && visitPatient.value" class="form__mat-form-field form__mat-form-field--validation">
         Doctor can't give himself/herself a visit
       </mat-error>
     </mat-card-content>
     <mat-card-content>
       <button
         mat-raised-button
-        class="mat-form-field-button"
+        class="form__mat-form-field-button"
         color="primary"
         (click)="addVisitClick(selectedPatient, selectedDoctor)"
       >
@@ -46,14 +46,14 @@
 </mat-card>
 <div *ngIf="user?.role === 'doctor'">
 <mat-card class="mat-card">
-    <mat-card-header class="mat-card-header">
+    <mat-card-header class="mat-card__header">
         <h2>Today progress</h2>
     </mat-card-header>
     <mat-card-content >
         <label>Visits in progress: {{todayVisitInProgress}}</label>
         <label>Visits finished: {{todayVisitFinished}}</label>
         <mat-progress-spinner
-        class="visits-progress"
+        class="mat-card__visits-progress"
         color= 'primary'
         mode="determinate"        
         [value]="todayVisitFinished/(todayVisitFinished + todayVisitInProgress) * 100">
@@ -62,7 +62,7 @@
 </mat-card>
 
 <mat-card class="mat-card" >
-    <mat-card-header class="mat-card-header">
+    <mat-card-header class="mat-card__header">
         <h2>Visits finished</h2>
     </mat-card-header>
     <mat-card-header>
@@ -107,8 +107,8 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumnsWithEdit"></tr>
     
             <!-- Row shown when there is no matching data. -->
-            <tr class="mat-row" *matNoDataRow>
-              <td class="mat-cell" colspan="4">
+            <tr *matNoDataRow>
+              <td colspan="4">
                 <span *ngIf="!input.value">No data visits in progress "{{ input.value }}"</span>
                 <span *ngIf="input.value">No data matching the filter "{{ input.value }}"</span>
               </td>
@@ -127,7 +127,7 @@
 </mat-card>
 
 <mat-card class="mat-card">
-    <mat-card-header class="mat-card-header">
+    <mat-card-header class="mat-card__header">
         <h2>Visits in progress</h2>
     </mat-card-header>
     <mat-card-header>
@@ -174,8 +174,8 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumnsWithEdit"></tr>
     
             <!-- Row shown when there is no matching data. -->
-            <tr class="mat-row" *matNoDataRow>
-              <td class="mat-cell" colspan="4">
+            <tr *matNoDataRow>
+              <td colspan="4">
                 <span *ngIf="!inputprogress.value">No data visits in progress </span>
                 <span *ngIf="inputprogress.value">No data matching the filter "{{ inputprogress.value }}"</span>
               </td>
