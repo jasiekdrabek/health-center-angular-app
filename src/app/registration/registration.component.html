@@ -1,35 +1,42 @@
-<mat-card class="mat-card">  
-  <mat-card-header class="mat-card-header">
-    <h2>Register new patients</h2>
+<mat-card class="mat-card">
+  <mat-card-header class="mat-card__header">
+    <h1>Register new patients</h1>
   </mat-card-header>
-  <mat-card-content>
-    <mat-form-field appearance="fill" class="mat-form-field">
+  <mat-card-content class="form">
+    <mat-form-field appearance="fill" class="form__mat-form-field">
       <mat-label>Login:</mat-label>
       <input matInput #login />
     </mat-form-field>
-    <mat-form-field appearance="fill" class="mat-form-field">
+    <mat-form-field appearance="fill" class="form__mat-form-field">
       <mat-label>Password:</mat-label>
       <input matInput #password type="password" />
     </mat-form-field>
-    <mat-error *ngIf="!isValidPassword(password.value) && password.value" class="mat-form-field validation">
-      password must have at least one digit, uppercase and lowercase letter and must be between 6 and 20 characters
+    <mat-error
+      *ngIf="!isValidPassword(password.value) && password.value"
+      class="form__mat-form-field form__mat-form-field--validation"
+    >
+      password must have at least one digit, uppercase and lowercase letter and
+      must be between 6 and 20 characters
     </mat-error>
-    <mat-form-field appearance="fill" class="mat-form-field">
+    <mat-form-field appearance="fill" class="form__mat-form-field">
       <mat-label>Name:</mat-label>
       <input matInput #name />
     </mat-form-field>
-    <mat-form-field appearance="fill" class="mat-form-field">
+    <mat-form-field appearance="fill" class="form__mat-form-field">
       <mat-label>Pesel:</mat-label>
       <input matInput #pesel />
     </mat-form-field>
-    <mat-error *ngIf="!isValidPesel(pesel.value) && pesel.value" class="mat-form-field validation">
+    <mat-error
+      *ngIf="!isValidPesel(pesel.value) && pesel.value"
+      class="form__mat-form-field form__mat-form-field--validation"
+    >
       Please enter a valid pesel
-    </mat-error>    
+    </mat-error>
   </mat-card-content>
   <mat-card-content>
     <button
       mat-raised-button
-      class="mat-form-field-button"
+      class="form__mat-form-field-button"
       color="primary"
       (click)="
         registrationClick(login.value, password.value, name.value, pesel.value)
