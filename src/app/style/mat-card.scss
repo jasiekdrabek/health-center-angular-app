@@ -1,0 +1,36 @@
+.mat-card {
+  margin-top: 5%;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  height: fit-content;
+  &__content {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #bbdefb;
+  }
+  &__header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+  &__visits-progress {
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__button {
+    height: fit-content;
+    width: fit-content;
+    border: none;
+    margin-right: 20px;
+  }
+  &__mat-icon {
+    font-size: 1.5em;
+    height: fit-content;
+    width: fit-content;
+  }
+}
