@@ -1,27 +1,5 @@
-.form {
-  &__mat-form-field {
-    width: 70%;
-    margin-left: 15%;
-  }
-  &__mat-form-field-button {
-    margin-left: 15%;
-    width: 17.5%;
-  }
-}
-
-.mat-card {
-  margin-top: 5%;
-  width: 60%;
-  margin-left: 20%;
-  height: fit-content;
-  margin-bottom: 20px;
-  &__header {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-  }
-}
+@import "../style/form.scss";
+@import "../style/mat-card.scss";
 
 .mat-card-content-details {
   font-size: medium;
