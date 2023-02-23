@@ -37,15 +37,14 @@
     margin-top: -20px; }
 
 .form__mat-form-field-button {
-  margin-left: 15%;
-  width: 17.5%; }
+  margin-left: 15%; }
 
 label {
   display: block;
   margin-left: 10%; }
 
 .mat-card {
-  background-color: #64b5f6; }
+  min-width: 60%; }
 
 label {
   text-align: left;

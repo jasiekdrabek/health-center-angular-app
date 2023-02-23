@@ -2,8 +2,8 @@
 @import "../style/form.scss";
 @import "../style/label.scss";
 
-.mat-card {
-  background-color: #64b5f6;
+.mat-card{
+  min-width: 60%;
 }
 
 label {
