@@ -6,7 +6,8 @@
     margin-top: -20px; }
 
 .form__mat-form-field-button {
-  margin-left: 15%; }
+  margin-left: 15%;
+  width: 17.5%; }
 
 .mat-card {
   margin-top: 5%;
@@ -14,6 +15,12 @@
   margin-left: auto;
   margin-right: auto;
   height: fit-content; }
+  .mat-card__content {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #bbdefb; }
   .mat-card__header {
     text-align: center;
     margin-left: auto;
@@ -23,6 +30,15 @@
     margin-top: 16px;
     margin-left: auto;
     margin-right: auto; }
+  .mat-card__button {
+    height: fit-content;
+    width: fit-content;
+    border: none;
+    margin-right: 20px; }
+  .mat-card__mat-icon {
+    font-size: 1.5em;
+    height: fit-content;
+    width: fit-content; }
 
 label {
   display: block;
@@ -34,3 +50,10 @@ td {
   min-width: 20px;
   width: fit-content;
   padding: 1 1 1 1; }
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%; }
+  table__detail-row {
+    height: 0; }

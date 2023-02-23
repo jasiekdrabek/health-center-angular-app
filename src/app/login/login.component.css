@@ -1,6 +1,9 @@
 .form__mat-form-field {
   width: 70%;
   margin-left: 15%; }
+  .form__mat-form-field--validation {
+    margin-bottom: 20px;
+    margin-top: -20px; }
 
 .form__mat-form-field-button {
   margin-left: 15%;
@@ -8,15 +11,34 @@
 
 .mat-card {
   margin-top: 5%;
-  width: 60%;
-  margin-left: 20%;
-  height: fit-content;
-  margin-bottom: 20px; }
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  height: fit-content; }
+  .mat-card__content {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #bbdefb; }
   .mat-card__header {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px; }
+  .mat-card__visits-progress {
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto; }
+  .mat-card__button {
+    height: fit-content;
+    width: fit-content;
+    border: none;
+    margin-right: 20px; }
+  .mat-card__mat-icon {
+    font-size: 1.5em;
+    height: fit-content;
+    width: fit-content; }
 
 .mat-card-content-details {
   font-size: medium;
