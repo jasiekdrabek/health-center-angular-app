@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Firebase deploy
 
-[HealthCenterAngularApp](https://health-center-angular-app.web.app/). Example login: with doctor role: drJan; nurse role: nurseZofia; patient role: patientMama. All acounts have password: 123.
+[HealthCenterAngularApp](https://jan-health-center-angular-app.netlify.app/). Example login: with doctor role: drJan; nurse role: nurseZofia; patient role: patientMama. All acounts have password: 123.
 
 ## To do list
 
