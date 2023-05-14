@@ -6,16 +6,16 @@ import { handleError } from '../helpers/handleError';
 
 @Injectable()
 export class MedicinesService {
-  private medicinesUrl = 'api/medicines';
+  private medicinesUrl = 'https://health-center-angular-app-back.herokuapp.com/api/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Medicine[]> {
+  public getAll(): Observable<Medicine[]> {
     return this.http
-      .get<Medicine[]>(this.medicinesUrl)
+      .get<Medicine[]>(this.medicinesUrl + 'getallmedicines')
       .pipe(catchError(handleError<Medicine[]>([])));
   }
 }

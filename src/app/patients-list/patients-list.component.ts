@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
+import { SnackBarMessageService } from '../services/snack-bar-message.service';
 
 @Component({
   selector: 'app-patients-list',
@@ -11,15 +12,18 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./patients-list.component.css'],
 })
 export class PatientsListComponent {
-  displayedColumns: string[] = ['id', 'name', 'pesel', 'actions'];
+  displayedColumns: string[] = ['name', 'pesel', 'actions'];
   dataSource!: MatTableDataSource<User>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   isLoadingResults = true;
   isRateLimitReached = false;
 
-  constructor(private userService: UserService) {
-    this.userService.getPatients().subscribe((users) => {
+  constructor(
+    private userService: UserService,
+    private snackBarMessageService: SnackBarMessageService
+  ) {
+    this.userService.getUsers('patient').subscribe((users) => {
       this.dataSource = new MatTableDataSource(users);
       this.isRateLimitReached = true;
       this.dataSource.paginator = this.paginator;
@@ -28,7 +32,7 @@ export class PatientsListComponent {
   }
 
   ngAfterViewInit() {
-    this.userService.getPatients().subscribe((users) => {
+    this.userService.getUsers('patient').subscribe((users) => {
       this.dataSource = new MatTableDataSource(users);
       this.isRateLimitReached = true;
       this.dataSource.paginator = this.paginator;
@@ -46,7 +50,15 @@ export class PatientsListComponent {
   }
 
   delete(user: User): void {
-    this.userService.deleteUser(user.id).subscribe();
-    this.ngAfterViewInit();
+    this.userService.deleteUser(user._id).subscribe((user) => {
+      user.name
+        ? this.openSnackBar(`deleted user ${user.name}`)
+        : this.openSnackBar(`There is no user with this id`);
+      this.ngAfterViewInit();
+    });
+  }
+
+  openSnackBar(message: string) {
+    this.snackBarMessageService.open(message).afterDismissed();
   }
 }

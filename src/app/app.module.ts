@@ -10,8 +10,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
@@ -35,9 +33,6 @@ import { MatProgressBarModule} from '@angular/material/progress-bar'
     MatIconModule,
     MatListModule,
     MatProgressBarModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-    }),
   ],
   providers: [UserService],
   bootstrap: [AppComponent],

@@ -7,45 +7,17 @@ import { MedicalReferral } from '../interfaces/medicalReferral';
 
 @Injectable()
 export class MedicalReferralService {
-  private medicalReferralUrl = 'api/medicalReferrals';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
+  private medicalReferralUrl = 'https://health-center-angular-app-back.herokuapp.com/api/';
+
   constructor(private http: HttpClient) {}
 
-  getMedicalReferral(id: number): Observable<MedicalReferral> {
-    return this.http
-      .get<MedicalReferral>(this.medicalReferralUrl + `/${id}`)
-      .pipe(catchError(handleError<MedicalReferral>()));
-  }
 
-  getUserMedicalReferrals(id: number): Observable<MedicalReferral[]> {
-    return this.http
-      .get<MedicalReferral[]>(this.medicalReferralUrl + `?patientId=${id}`)
-      .pipe(catchError(handleError<MedicalReferral[]>([])));
-  }
 
-  updaterMedicalReferral(medicalReferral: MedicalReferral): Observable<any> {
+  public getUserMedicalReferrals(id: string): Observable<MedicalReferral[]> {
     return this.http
-      .put(this.medicalReferralUrl, medicalReferral, this.httpOptions)
-      .pipe(catchError(handleError()));
-  }
-
-  addMedicalReferral(
-    medicalReferral: MedicalReferral
-  ): Observable<MedicalReferral> {
-    return this.http
-      .post<MedicalReferral>(
-        this.medicalReferralUrl,
-        medicalReferral,
-        this.httpOptions
+      .get<MedicalReferral[]>(
+        this.medicalReferralUrl + `getusermedicalreferrals/${id}`
       )
-      .pipe(catchError(handleError<MedicalReferral>()));
-  }
-
-  deleteMedicalReferral(id: number): Observable<MedicalReferral> {
-    return this.http
-      .delete<MedicalReferral>(this.medicalReferralUrl + `${id}`)
-      .pipe(catchError(handleError<MedicalReferral>()));
+      .pipe(catchError(handleError<MedicalReferral[]>([])));
   }
 }

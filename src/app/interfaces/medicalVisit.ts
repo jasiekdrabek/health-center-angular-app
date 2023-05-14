@@ -3,12 +3,12 @@ import { Prescription } from './prescription';
 import { User } from './user';
 
 export interface MedicalVisit {
-  id: number;
+  _id: string;
   patient: User;
-  doctorId: number;
+  doctorId: string;
   details?: string;
   date: string;
-  prescription?: Prescription;
-  medicalReferral?: MedicalReferral;
+  prescription?: Prescription | null;
+  medicalReferral?: MedicalReferral | null;
   status:string;
 }

@@ -14,7 +14,6 @@ import { UserService } from '../services/user.service';
 })
 export class MedicalReferralComponent {
   displayedColumns: string[] = [
-    'id',
     'code',
     'date',
     'toWhichSpecialistDoctor',
@@ -32,7 +31,7 @@ export class MedicalReferralComponent {
   ) {
     this.user = this.userService.userValue;
     this.medicalReferralService
-      .getUserMedicalReferrals(this.user?.id as number)
+      .getUserMedicalReferrals(this.user?._id as string)
       .subscribe((medicalReferrals) => {
         this.dataSource = new MatTableDataSource(medicalReferrals);
         this.isRateLimitReached = true;
@@ -43,7 +42,7 @@ export class MedicalReferralComponent {
 
   ngAfterViewInit() {
     this.medicalReferralService
-      .getUserMedicalReferrals(this.user?.id as number)
+      .getUserMedicalReferrals(this.user?._id as string)
       .subscribe((medicalReferrals) => {
         this.dataSource = new MatTableDataSource(medicalReferrals);
         this.isRateLimitReached = true;

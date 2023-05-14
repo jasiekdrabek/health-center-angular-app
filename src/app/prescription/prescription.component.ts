@@ -30,7 +30,7 @@ import { UserService } from '../services/user.service';
   ],
 })
 export class PrescriptionComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'code', 'date'];
+  displayedColumns: string[] = ['code', 'date'];
   displayedMedicineColumns: string[] = [
     'name',
     'activeSubstance',
@@ -52,7 +52,7 @@ export class PrescriptionComponent implements AfterViewInit {
   ) {
     this.user = this.userService.userValue;
     this.prescriptionService
-      .getUserPrescriptions(this.user?.id as number)
+      .getUserPrescriptions(this.user?._id as string)
       .subscribe((prescription) => {
         this.dataSource = new MatTableDataSource(prescription);
         this.isRateLimitReached = true;
@@ -63,7 +63,7 @@ export class PrescriptionComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.prescriptionService
-      .getUserPrescriptions(this.user?.id as number)
+      .getUserPrescriptions(this.user?._id as string)
       .subscribe((prescription) => {
         this.dataSource = new MatTableDataSource(prescription);
         this.isRateLimitReached = true;
@@ -75,7 +75,6 @@ export class PrescriptionComponent implements AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }

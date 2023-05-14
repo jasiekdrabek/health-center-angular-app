@@ -34,7 +34,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
   isLoadingResults = true;
   isRateLimitReachedVisitInProgress = false;
   isRateLimitReachedVisitFinished = false;
-  displayedColumns: string[] = ['id', 'patient', 'date'];
+  displayedColumns: string[] = ['patient', 'date'];
   displayedColumnsWithEdit: string[] = [...this.displayedColumns, 'actions'];
   constructor(
     private snackBarMessageService: SnackBarMessageService,
@@ -42,8 +42,8 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
     private userService: UserService
   ) {
     this.user = this.userService.userValue;
-    this.medicalVisitService.getMedicalVisitInProgress(this.user?.id as number).subscribe((visits) => {
-      this.medicalVisitService.getMedicalVisitFinished(this.user?.id as number).subscribe((visits) => {
+    this.medicalVisitService.getMedicalVisitInProgress(this.user?._id as string).subscribe((visits) => {
+      this.medicalVisitService.getMedicalVisitFinished(this.user?._id as string).subscribe((visits) => {
         this.dataSourceVisitFinished = new MatTableDataSource(visits);
         this.dataSourceVisitFinished.paginator = this.paginator.toArray()[0];
         this.dataSourceVisitFinished.sort = this.sort.toArray()[0];
@@ -56,14 +56,14 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.medicalVisitService.getMedicalVisitInProgress(this.user?.id as number).subscribe((visits) => {
-      this.medicalVisitService.getMedicalVisitFinished(this.user?.id as number).subscribe((visits) => {
+    this.medicalVisitService.getMedicalVisitInProgress(this.user?._id as string).subscribe((visits) => {
+      this.medicalVisitService.getMedicalVisitFinished(this.user?._id as string).subscribe((visits) => {
         this.dataSourceVisitFinished = new MatTableDataSource(visits);
         this.dataSourceVisitFinished.paginator = this.paginator.toArray()[0];
         this.dataSourceVisitFinished.sort = this.sort.toArray()[0];
         this.isRateLimitReachedVisitFinished = true;
         this.dataSourceVisitFinished.filterPredicate = (data, filter) => {
-          const dataStr = data.id + data.patient.name.toLowerCase() + data.date;
+          const dataStr = data._id + data.patient.name.toLowerCase() + data.date;
           return dataStr.indexOf(filter) != -1;
         };
       });
@@ -72,7 +72,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
       this.dataSourceVisitInProgress.paginator = this.paginator.toArray()[1];
       this.dataSourceVisitInProgress.sort = this.sort.toArray()[1];
       this.dataSourceVisitInProgress.filterPredicate = (data, filter) => {
-        const dataStr = data.id + data.patient.name.toLowerCase() + data.date;
+        const dataStr = data._id + data.patient.name.toLowerCase() + data.date;
         return dataStr.indexOf(filter) != -1;
       };
     });
@@ -80,19 +80,19 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((patients) => {
-      patients.splice(patients.findIndex(patient => patient.id == this.user?.id),1)
+      patients.splice(patients.findIndex(patient => patient._id == this.user?._id),1)
       this.patients = patients;      
     });
     this.userService
-      .getDoctors()
+      .getUsers('doctor')
       .subscribe((doctors) => (this.doctors = doctors));
     this.medicalVisitService
-      .getTodayMedicalVisitInProgress()
+      .getTodayMedicalVisitInProgress(this.user?._id as string)
       .subscribe(
         (medcalVisits) => (this.todayVisitInProgress = medcalVisits.length)
       );
     this.medicalVisitService
-      .getTodayMedicalVisitFinished()
+      .getTodayMedicalVisitFinished(this.user?._id as string)
       .subscribe(
         (medcalVisits) => (this.todayVisitFinished = medcalVisits.length)
       );
@@ -100,7 +100,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
 
   addVisitClick(patient: User, doctor: User) {
     if (!patient || !doctor) return;
-    if(patient.id == doctor.id) return;
+    if(patient._id == doctor._id) return;
     const nowDate = new Date();
     const date =
       nowDate.getDate() +
@@ -111,7 +111,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
     this.medicalVisitService
       .addMedicalVisit({
         patient: patient,
-        doctorId: doctor.id,
+        doctorId: doctor._id,
         status: 'in progress',
         date: date,
       } as MedicalVisit)

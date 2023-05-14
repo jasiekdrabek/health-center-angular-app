@@ -1,5 +1,5 @@
 export interface Medicine {
-  id: number;
+  _id: string;
   name: string;
   activeSubstance: string;
   dose: number;

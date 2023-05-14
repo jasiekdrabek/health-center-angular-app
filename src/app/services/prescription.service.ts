@@ -7,33 +7,12 @@ import { Prescription } from '../interfaces/prescription';
 
 @Injectable()
 export class PrescriptionService {
-  private prescriptionUrl = 'api/prescriptions';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
+  private prescriptionUrl = 'https://health-center-angular-app-back.herokuapp.com/api/';
   constructor(private http: HttpClient) {}
 
-  public getUserPrescriptions(id: number): Observable<Prescription[]> {
+  public getUserPrescriptions(id: string): Observable<Prescription[]> {
     return this.http
-      .get<Prescription[]>(this.prescriptionUrl + `?patientId=${id}`)
+      .get<Prescription[]>(this.prescriptionUrl + `getuserprescriptions/${id}`)
       .pipe(catchError(handleError<Prescription[]>([])));
-  }
-
-  updatePrescription(prescription: Prescription): Observable<any> {
-    return this.http
-      .put(this.prescriptionUrl, prescription, this.httpOptions)
-      .pipe(catchError(handleError()));
-  }
-
-  addPrescription(prescription: Prescription): Observable<Prescription> {
-    return this.http
-      .post<Prescription>(this.prescriptionUrl, prescription, this.httpOptions)
-      .pipe(catchError(handleError<Prescription>()));
-  }
-
-  deletePrescription(id: number): Observable<Prescription> {
-    return this.http
-      .delete<Prescription>(this.prescriptionUrl + `/${id}`,this.httpOptions)
-      .pipe(catchError(handleError<Prescription>()));
   }
 }

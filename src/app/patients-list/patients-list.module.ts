@@ -10,6 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackBarMessageService } from '../services/snack-bar-message.service';
 @NgModule({
   declarations: [PatientsListComponent],
   imports: [
@@ -23,6 +25,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatButtonModule,
     MatIconModule,
     MatSortModule,
+    MatSnackBarModule
   ],
+  providers:[SnackBarMessageService],
 })
 export class PatientsListModule {}

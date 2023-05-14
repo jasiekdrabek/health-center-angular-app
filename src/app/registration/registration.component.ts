@@ -37,7 +37,7 @@ export class RegistrationComponent {
         name: name,
         role: 'patient',
       } as User)
-      .subscribe((user)=> {this.openSnackBar(`add new user ${user.name}`)});
+      .subscribe((user)=> {user.name ? this.openSnackBar(`add new user ${user.name}`): this.openSnackBar(`This user already exist`)});
   }
 
   openSnackBar(message: string) {

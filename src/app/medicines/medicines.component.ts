@@ -11,7 +11,7 @@ import { MedicinesService } from '../services/medicines.service';
   styleUrls: ['./medicines.component.css'],
 })
 export class MedicinesComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'dose', 'activeSubstance'];
+  displayedColumns: string[] = ['name', 'dose', 'activeSubstance'];
   dataSource!: MatTableDataSource<Medicine>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

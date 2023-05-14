@@ -6,19 +6,21 @@ import { MedicalVisit } from '../interfaces/medicalVisit';
 
 @Injectable()
 export class MedicalVisitService {
-  urlMedicalVisit = 'api/medicalVisits';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
+  urlMedicalVisit = 'https://health-center-angular-app-back.herokuapp.com/api/';
   constructor(private http: HttpClient) {}
 
-  addMedicalVisit(medicalVisit: MedicalVisit) {
+  public addMedicalVisit(medicalVisit: MedicalVisit) {
     return this.http
-      .post<MedicalVisit>(this.urlMedicalVisit, medicalVisit, this.httpOptions)
+      .post<MedicalVisit>(
+        this.urlMedicalVisit + `addmedicalvisit`,
+        medicalVisit
+      )
       .pipe(catchError(handleError()));
   }
 
-  getTodayMedicalVisitInProgress(): Observable<MedicalVisit[]> {
+  public getTodayMedicalVisitInProgress(
+    id: string
+  ): Observable<MedicalVisit[]> {
     const nowDate = new Date();
     const date =
       nowDate.getDate() +
@@ -28,12 +30,13 @@ export class MedicalVisitService {
       nowDate.getFullYear();
     return this.http
       .get<MedicalVisit[]>(
-        this.urlMedicalVisit + `?status=in progress&date=${date}`
+        this.urlMedicalVisit +
+          `getmedicalvisits?status=in progress&date=${date}&doctorId=${id}`
       )
       .pipe(catchError(handleError([])));
   }
 
-  getTodayMedicalVisitFinished(): Observable<MedicalVisit[]> {
+  public getTodayMedicalVisitFinished(id: string): Observable<MedicalVisit[]> {
     const nowDate = new Date();
     const date =
       nowDate.getDate() +
@@ -42,35 +45,39 @@ export class MedicalVisitService {
       '.' +
       nowDate.getFullYear();
     return this.http
-      .get<MedicalVisit[]>(this.urlMedicalVisit + `?status=finish&date=${date}`)
-      .pipe(catchError(handleError([])));
-  }
-
-  getMedicalVisitInProgress(id: number): Observable<MedicalVisit[]> {
-    return this.http
       .get<MedicalVisit[]>(
-        this.urlMedicalVisit + `?status=in progress&doctorId=${id}`
+        this.urlMedicalVisit +
+          `getmedicalvisits?status=finish&date=${date}&doctorId=${id}`
       )
       .pipe(catchError(handleError([])));
   }
 
-  getMedicalVisitFinished(id: number): Observable<MedicalVisit[]> {
+  public getMedicalVisitInProgress(id: string): Observable<MedicalVisit[]> {
     return this.http
       .get<MedicalVisit[]>(
-        this.urlMedicalVisit + `?status=finish&doctorId=${id}`
+        this.urlMedicalVisit +
+          `getmedicalvisits?status=in progress&doctorId=${id}`
       )
       .pipe(catchError(handleError([])));
   }
 
-  getMadicalVisit(id: number): Observable<MedicalVisit> {
+  public getMedicalVisitFinished(id: string): Observable<MedicalVisit[]> {
     return this.http
-      .get<MedicalVisit>(this.urlMedicalVisit + `/${id}`)
+      .get<MedicalVisit[]>(
+        this.urlMedicalVisit + `getmedicalvisits?status=finish&doctorId=${id}`
+      )
+      .pipe(catchError(handleError([])));
+  }
+
+  public getMadicalVisit(id: string): Observable<MedicalVisit> {
+    return this.http
+      .get<MedicalVisit>(this.urlMedicalVisit + `getmadicalvisit/${id}`)
       .pipe(catchError(handleError({} as MedicalVisit)));
   }
 
-  updateMedicalVisit(visit: MedicalVisit): Observable<any> {
+  public updateMedicalVisit(visit: MedicalVisit): Observable<any> {
     return this.http
-      .put(this.urlMedicalVisit, visit, this.httpOptions)
+      .put(this.urlMedicalVisit + `updatemedicalvisit`, visit)
       .pipe(catchError(handleError()));
   }
 }

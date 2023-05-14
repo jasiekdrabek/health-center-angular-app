@@ -29,7 +29,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-error *ngIf="visitDoctor.value?.id == visitPatient.value?.id && visitDoctor.value && visitPatient.value" class="form__mat-form-field form__mat-form-field--validation">
+      <mat-error *ngIf="visitDoctor.value?._id == visitPatient.value?._id && visitDoctor.value && visitPatient.value" class="form__mat-form-field form__mat-form-field--validation">
         Doctor can't give himself/herself a visit
       </mat-error>
     </mat-card-content>
@@ -78,11 +78,7 @@
       </mat-card-header>
       <mat-card-content>
         <div>
-          <table mat-table [dataSource]="dataSourceVisitFinished" matSort>
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-              <td mat-cell *matCellDef="let row">{{ row.id }}</td>
-            </ng-container>
+          <table mat-table [dataSource]="dataSourceVisitFinished" matSort>            
     
             <ng-container matColumnDef="patient">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Patient</th>
@@ -96,7 +92,7 @@
             
             <ng-container matColumnDef="actions">
               <th mat-header-cell *matHeaderCellDef mat-sort-header disabled></th>
-              <td mat-cell *matCellDef="let row" routerLink="./details/{{row.id}}">
+              <td mat-cell *matCellDef="let row" routerLink="./details/{{row._id}}">
                 <button mat-icon-button color="primary">
                   <mat-icon>edit</mat-icon>
                 </button>
@@ -109,8 +105,8 @@
             <!-- Row shown when there is no matching data. -->
             <tr *matNoDataRow>
               <td colspan="4">
-                <span *ngIf="!input.value">No data visits in progress "{{ input.value }}"</span>
-                <span *ngIf="input.value">No data matching the filter "{{ input.value }}"</span>
+                <span *ngIf="!inputprogress.value">No data visits finished </span>
+                <span *ngIf="inputprogress.value">No data matching the filter "{{ inputprogress.value }}"</span>
               </td>
             </tr>
           </table>
@@ -144,10 +140,6 @@
       <mat-card-content>
         <div>
           <table mat-table [dataSource]="dataSourceVisitInProgress" matSort>
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-              <td mat-cell *matCellDef="let row">{{ row.id }}</td>
-            </ng-container>
     
             <ng-container matColumnDef="patient">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Patient</th>
@@ -161,14 +153,12 @@
 
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header disabled></th>
-                <td mat-cell *matCellDef="let row" routerLink="./details/{{row.id}}">
+                <td mat-cell *matCellDef="let row" routerLink="./details/{{row._id}}">
                   <button mat-icon-button color="primary">
                     <mat-icon>edit</mat-icon>
                   </button>
                 </td>
-              </ng-container>
-    
-            
+              </ng-container>            
     
             <tr mat-header-row *matHeaderRowDef="displayedColumnsWithEdit"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumnsWithEdit"></tr>
