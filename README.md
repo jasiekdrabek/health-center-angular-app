@@ -2,13 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
 
-## Firebase deploy
+## Deploy
 
 [HealthCenterAngularApp](https://jan-health-center-angular-app.netlify.app/). Example login: with doctor role: drJan; nurse role: nurseZofia; patient role: patientMama. All acounts have password: 123.
-
-## To do list
-
-- add to home page possibility to calculate clinical markers from [Api](https://rapidapi.com/jdimou/api/clinicalmarkers/)
 
 ## App screenshots
 

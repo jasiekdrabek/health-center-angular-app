@@ -6,7 +6,7 @@ import { MedicalVisit } from '../interfaces/medicalVisit';
 
 @Injectable()
 export class MedicalVisitService {
-  urlMedicalVisit = 'https://health-center-angular-app-back.herokuapp.com/api/';
+  urlMedicalVisit = process.env.URL;
   constructor(private http: HttpClient) {}
 
   public addMedicalVisit(medicalVisit: MedicalVisit) {

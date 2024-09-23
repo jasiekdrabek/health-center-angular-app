@@ -7,7 +7,7 @@ import { MedicalReferral } from '../interfaces/medicalReferral';
 
 @Injectable()
 export class MedicalReferralService {
-  private medicalReferralUrl = 'https://health-center-angular-app-back.herokuapp.com/api/';
+  private medicalReferralUrl = process.env.URL;
 
   constructor(private http: HttpClient) {}
 

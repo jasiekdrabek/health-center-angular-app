@@ -9,7 +9,7 @@ import { User } from '../interfaces/user';
   providedIn: 'root',
 })
 export class UserService {
-  private usersUrl = 'https://health-center-angular-app-back.herokuapp.com/api/';
+  private usersUrl = process.env.URL;;
   userSubject: BehaviorSubject<User | undefined>;
   user: any;
 

@@ -7,7 +7,7 @@ import { Prescription } from '../interfaces/prescription';
 
 @Injectable()
 export class PrescriptionService {
-  private prescriptionUrl = 'https://health-center-angular-app-back.herokuapp.com/api/';
+  private prescriptionUrl = process.env.URL;;
   constructor(private http: HttpClient) {}
 
   public getUserPrescriptions(id: string): Observable<Prescription[]> {

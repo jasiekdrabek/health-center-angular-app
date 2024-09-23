@@ -6,7 +6,7 @@ import { handleError } from '../helpers/handleError';
 
 @Injectable()
 export class MedicinesService {
-  private medicinesUrl = 'https://health-center-angular-app-back.herokuapp.com/api/';
+  private medicinesUrl = process.env.URL;;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
