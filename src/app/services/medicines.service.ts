@@ -3,10 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 import { Medicine } from '../interfaces/medicine';
 import { handleError } from '../helpers/handleError';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MedicinesService {
-  private medicinesUrl = process.env['URL'];;
+  private medicinesUrl = environment.Url;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };

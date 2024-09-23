@@ -4,12 +4,13 @@ import { catchError, Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { handleError } from '../helpers/handleError';
 import { User } from '../interfaces/user';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private usersUrl = process.env['URL'];
+  private usersUrl = environment.Url;
   userSubject: BehaviorSubject<User | undefined>;
   user: any;
 

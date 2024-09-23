@@ -4,10 +4,11 @@ import { catchError } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { handleError } from '../helpers/handleError';
 import { MedicalReferral } from '../interfaces/medicalReferral';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MedicalReferralService {
-  private medicalReferralUrl = process.env['URL'];
+  private medicalReferralUrl = environment.Url;
 
   constructor(private http: HttpClient) {}
 

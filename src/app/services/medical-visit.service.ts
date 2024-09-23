@@ -3,10 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { handleError } from '../helpers/handleError';
 import { catchError, Observable } from 'rxjs';
 import { MedicalVisit } from '../interfaces/medicalVisit';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MedicalVisitService {
-  urlMedicalVisit = process.env['URL'];
+  urlMedicalVisit = environment.Url;
   constructor(private http: HttpClient) {}
 
   public addMedicalVisit(medicalVisit: MedicalVisit) {
