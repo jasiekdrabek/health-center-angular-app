@@ -7,7 +7,7 @@ import { Prescription } from '../interfaces/prescription';
 
 @Injectable()
 export class PrescriptionService {
-  private prescriptionUrl = process.env.URL;;
+  private prescriptionUrl = process.env['URL'];
   constructor(private http: HttpClient) {}
 
   public getUserPrescriptions(id: string): Observable<Prescription[]> {

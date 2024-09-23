@@ -7,7 +7,7 @@ import { MedicalReferral } from '../interfaces/medicalReferral';
 
 @Injectable()
 export class MedicalReferralService {
-  private medicalReferralUrl = process.env.URL;
+  private medicalReferralUrl = process.env['URL'];
 
   constructor(private http: HttpClient) {}
 

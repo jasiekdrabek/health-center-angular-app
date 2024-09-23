@@ -6,7 +6,7 @@ import { MedicalVisit } from '../interfaces/medicalVisit';
 
 @Injectable()
 export class MedicalVisitService {
-  urlMedicalVisit = process.env.URL;
+  urlMedicalVisit = process.env['URL'];
   constructor(private http: HttpClient) {}
 
   public addMedicalVisit(medicalVisit: MedicalVisit) {
