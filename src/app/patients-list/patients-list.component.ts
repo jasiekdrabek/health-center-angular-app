@@ -50,6 +50,7 @@ export class PatientsListComponent {
   }
 
   delete(user: User): void {
+    if (user._id == null) return;
     this.userService.deleteUser(user._id).subscribe((user) => {
       user.name
         ? this.openSnackBar(`deleted user ${user.name}`)

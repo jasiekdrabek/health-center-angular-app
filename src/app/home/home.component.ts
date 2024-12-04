@@ -27,10 +27,10 @@ export class HomeComponent implements OnInit {
   bmiClick(height: string, weight: string): void {
     this.clinicalMarkersApiservice.getBmi(height, weight).subscribe((res) => {
       const bmi = res as bmi;
-      this.bmi = bmi?.bmI_Dubois;
-      this.bmiCharacterisation = bmi?.bmI_Dubois_Characterisation;
-      if(bmi?.bmI_Dubois) this.loadBmi = true;
-      if(!bmi?.bmI_Dubois) this.openSnackBar('Api do not respond')
+      this.bmi = bmi.bmI_Dubois;
+      this.bmiCharacterisation = bmi.bmI_Dubois_Characterisation;
+      if(bmi.bmI_Dubois) this.loadBmi = true;
+      if(!bmi.bmI_Dubois) this.openSnackBar('Api do not respond')
     });
   }
 

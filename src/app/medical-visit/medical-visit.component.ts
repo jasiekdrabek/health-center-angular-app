@@ -42,46 +42,68 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
     private userService: UserService
   ) {
     this.user = this.userService.userValue;
-    this.medicalVisitService.getMedicalVisitInProgress(this.user?._id as string).subscribe((visits) => {
-      this.medicalVisitService.getMedicalVisitFinished(this.user?._id as string).subscribe((visits) => {
-        this.dataSourceVisitFinished = new MatTableDataSource(visits);
-        this.dataSourceVisitFinished.paginator = this.paginator.toArray()[0];
-        this.dataSourceVisitFinished.sort = this.sort.toArray()[0];
-      });
-      this.dataSourceVisitInProgress = new MatTableDataSource(visits);
-      this.dataSourceVisitInProgress.paginator = this.paginator.toArray()[1];
-      this.dataSourceVisitInProgress.sort = this.sort.toArray()[1];
-      this.isRateLimitReachedVisitInProgress = true;
-    });
+    if (this.user && this.user._id) {
+      this.medicalVisitService
+        .getMedicalVisitInProgress(this.user?._id as string)
+        .subscribe((visits) => {
+          this.medicalVisitService
+            .getMedicalVisitFinished(this.user?._id as string)
+            .subscribe((visits) => {
+              this.dataSourceVisitFinished = new MatTableDataSource(visits);
+              this.dataSourceVisitFinished.paginator =
+                this.paginator.toArray()[0];
+              this.dataSourceVisitFinished.sort = this.sort.toArray()[0];
+            });
+          this.dataSourceVisitInProgress = new MatTableDataSource(visits);
+          this.dataSourceVisitInProgress.paginator =
+            this.paginator.toArray()[1];
+          this.dataSourceVisitInProgress.sort = this.sort.toArray()[1];
+          this.isRateLimitReachedVisitInProgress = true;
+        });
+    }
   }
 
   ngAfterViewInit(): void {
-    this.medicalVisitService.getMedicalVisitInProgress(this.user?._id as string).subscribe((visits) => {
-      this.medicalVisitService.getMedicalVisitFinished(this.user?._id as string).subscribe((visits) => {
-        this.dataSourceVisitFinished = new MatTableDataSource(visits);
-        this.dataSourceVisitFinished.paginator = this.paginator.toArray()[0];
-        this.dataSourceVisitFinished.sort = this.sort.toArray()[0];
-        this.isRateLimitReachedVisitFinished = true;
-        this.dataSourceVisitFinished.filterPredicate = (data, filter) => {
-          const dataStr = data._id + data.patient.name.toLowerCase() + data.date;
+    if (this.user == null) return;
+    this.medicalVisitService
+      .getMedicalVisitInProgress(this.user._id as string)
+      .subscribe((visits) => {
+        if (this.user == null) return;
+        this.medicalVisitService
+          .getMedicalVisitFinished(this.user._id as string)
+          .subscribe((visits) => {
+            this.dataSourceVisitFinished = new MatTableDataSource(visits);
+            this.dataSourceVisitFinished.paginator =
+              this.paginator.toArray()[0];
+            this.dataSourceVisitFinished.sort = this.sort.toArray()[0];
+            this.isRateLimitReachedVisitFinished = true;
+            this.dataSourceVisitFinished.filterPredicate = (data, filter) => {
+              if (data.patient.name == null) return false;
+              const dataStr =
+                data._id + data.patient.name.toLowerCase() + data.date;
+              return dataStr.indexOf(filter) != -1;
+            };
+          });
+        this.dataSourceVisitInProgress = new MatTableDataSource(visits);
+        this.isRateLimitReachedVisitInProgress = true;
+        this.dataSourceVisitInProgress.paginator = this.paginator.toArray()[1];
+        this.dataSourceVisitInProgress.sort = this.sort.toArray()[1];
+        this.dataSourceVisitInProgress.filterPredicate = (data, filter) => {
+          if (data.patient.name == null) return false;
+          const dataStr =
+            data._id + data.patient.name.toLowerCase() + data.date;
           return dataStr.indexOf(filter) != -1;
         };
       });
-      this.dataSourceVisitInProgress = new MatTableDataSource(visits);
-      this.isRateLimitReachedVisitInProgress = true;
-      this.dataSourceVisitInProgress.paginator = this.paginator.toArray()[1];
-      this.dataSourceVisitInProgress.sort = this.sort.toArray()[1];
-      this.dataSourceVisitInProgress.filterPredicate = (data, filter) => {
-        const dataStr = data._id + data.patient.name.toLowerCase() + data.date;
-        return dataStr.indexOf(filter) != -1;
-      };
-    });
   }
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((patients) => {
-      patients.splice(patients.findIndex(patient => patient._id == this.user?._id),1)
-      this.patients = patients;      
+      patients.splice(
+        patients.findIndex((patient) => patient._id == this.user?._id),
+        1
+      );
+      this.patients = patients;
     });
     this.userService
       .getUsers('doctor')
@@ -100,7 +122,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
 
   addVisitClick(patient: User, doctor: User) {
     if (!patient || !doctor) return;
-    if(patient._id == doctor._id) return;
+    if (patient._id == doctor._id) return;
     const nowDate = new Date();
     const date =
       nowDate.getDate() +
@@ -118,7 +140,7 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
       .subscribe(() => {
         this.todayVisitInProgress += 1;
         this.ngAfterViewInit();
-        this.openSnackBar('add new visit for ' + this.selectedPatient.name)
+        this.openSnackBar('add new visit for ' + this.selectedPatient.name);
       });
   }
 
@@ -141,6 +163,6 @@ export class MedicalVisitComponent implements OnInit, AfterViewInit {
   }
 
   openSnackBar(message: string) {
-    this.snackBarMessageService.open(message).afterDismissed()    
+    this.snackBarMessageService.open(message).afterDismissed();
   }
 }

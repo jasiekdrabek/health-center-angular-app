@@ -30,17 +30,20 @@ export class MedicalReferralComponent {
     private userService: UserService
   ) {
     this.user = this.userService.userValue;
+    if (this.user && this.user._id){
     this.medicalReferralService
-      .getUserMedicalReferrals(this.user?._id as string)
+      .getUserMedicalReferrals(this.user._id as string)
       .subscribe((medicalReferrals) => {
         this.dataSource = new MatTableDataSource(medicalReferrals);
         this.isRateLimitReached = true;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       });
+    }
   }
 
   ngAfterViewInit() {
+    if (this.user && this.user._id){
     this.medicalReferralService
       .getUserMedicalReferrals(this.user?._id as string)
       .subscribe((medicalReferrals) => {
@@ -49,6 +52,7 @@ export class MedicalReferralComponent {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       });
+    }
   }
 
   applyFilter(event: Event) {

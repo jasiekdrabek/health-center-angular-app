@@ -51,14 +51,16 @@ export class PrescriptionComponent implements AfterViewInit {
     private userService: UserService
   ) {
     this.user = this.userService.userValue;
-    this.prescriptionService
-      .getUserPrescriptions(this.user?._id as string)
-      .subscribe((prescription) => {
-        this.dataSource = new MatTableDataSource(prescription);
-        this.isRateLimitReached = true;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      });
+    if (this.user && this.user._id) {
+      this.prescriptionService
+        .getUserPrescriptions(this.user._id as string)
+        .subscribe((prescription) => {
+          this.dataSource = new MatTableDataSource(prescription);
+          this.isRateLimitReached = true;
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
+    }
   }
 
   ngAfterViewInit() {
