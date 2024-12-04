@@ -22,12 +22,13 @@ export class LoginComponent {
     password = password.trim();
     if (!login || !password) return;
     password = hashPassword(password);
-    var newUser : User = {login: login, password:password}
-    this.userService.auth(newUser).subscribe((user : User) => {
+    var newUser: User = { login: login, password: password };
+    this.userService.auth(newUser).subscribe((user: User) => {
       if (!user) {
         this.openSnackBar('Incorrect login or password');
         return;
       }
+      console.log(user);
       if (user) {
         this.userService.setUserValue(user);
         this.router.navigate(['/home']);
