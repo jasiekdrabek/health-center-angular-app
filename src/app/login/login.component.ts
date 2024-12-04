@@ -23,15 +23,16 @@ export class LoginComponent {
     if (!login || !password) return;
     password = hashPassword(password);
     var newUser: User = { login: login, password: password };
-    this.userService.auth(newUser).subscribe((user: any) => {
+    this.userService.auth(newUser).subscribe((user: User) => {
+      console.log(user);
       if (!user) {
         this.openSnackBar('Incorrect login or password');
         return;
       }
       if (user) {
-        this.userService.setUserValue(user[0]);
+        this.userService.setUserValue(user);
         this.router.navigate(['/home']);
-        localStorage.setItem('user', JSON.stringify(user[0]));
+        localStorage.setItem('user', JSON.stringify(user));
       }
     });
   }
