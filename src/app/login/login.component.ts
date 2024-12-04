@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { hashPassword } from '../helpers/hashPassword';
 import { SnackBarMessageService } from '../services/snack-bar-message.service';
 import { UserService } from '../services/user.service';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-login',
@@ -21,10 +22,8 @@ export class LoginComponent {
     password = password.trim();
     if (!login || !password) return;
     password = hashPassword(password);
-    this.userService.getUsers().subscribe((users) => {
-      const user = users.find(
-        (x) => x.login === login && x.password === password
-      );
+    var newUser : User = {login: login, password:password}
+    this.userService.auth(newUser).subscribe((user : User) => {
       if (!user) {
         this.openSnackBar('Incorrect login or password');
         return;

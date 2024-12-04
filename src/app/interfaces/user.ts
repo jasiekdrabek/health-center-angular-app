@@ -1,8 +1,8 @@
 export interface User {
-  _id: string;
+  _id?: string;
   login: string;
   password: string;
-  name: string;
-  pesel: string;
-  role: string;
+  name?: string;
+  pesel?: string;
+  role?: string;
 }

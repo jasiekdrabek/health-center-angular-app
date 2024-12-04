@@ -41,4 +41,8 @@ export class UserService {
   public addUser(user : User){   
     return this.http.post<User>(this.usersUrl + 'adduser/',user ).pipe(catchError(handleError<User>()))
   }
+
+  public auth(user : User){
+    return this.http.post<User>(this.usersUrl + `auth/`, user).pipe(catchError(handleError<User>()))
+  }
 }
